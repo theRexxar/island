@@ -1,0 +1,31 @@
+div.navbar.navbar-fixed-top(role='navigation')
+  .navbar-header
+    button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    a#brandLogo.navbar-brand(href='/')
+      img.m-r-xs(src=config.cdn_assets + "/img/app.png" width="40", height="40")
+      span.text-dark.text-lg.font-bold #{pkg.product_name}
+
+  .collapse.navbar-collapse
+    ul.nav.navbar-nav.navbar-right.m-n.hidden-xs.nav-user.buzzer
+      - if (req.isAuthenticated())
+        li.dropdown
+          a(href="/#{req.user.username}" class="dropdown-toggle" title="#{req.user.firstname} #{req.user.lastname}")
+            span.thumb-sm.avatar.pull-left
+              if user_session.photo_profile
+                img(src=user_session.photo_profile, height=40, width=40)
+              else
+                img(src="#{user_session.gravatar()}", height=40, width=40)
+      - else
+        li
+          a.btn.btn-md.btn-twitter(href="/auth/twitter")
+            i.fa.fa-fw.fa-twitter
+            | &nbsp; Sign in with Twitter
+        li
+          a.btn.btn-md.btn-facebook(href="/auth/facebook")
+            i.fa.fa-fw.fa-facebook
+            | &nbsp; Sign in with Facebook
+
