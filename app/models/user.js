@@ -136,6 +136,16 @@ UserSchema.path('email').validate(function (email) {
   return email.length
 }, 'Email cannot be blank')
 
+UserSchema.path('firstname').validate(function (email) {
+  if (this.doesNotRequireValidation()) return true
+  return email.length
+}, 'Firstname cannot be blank')
+
+UserSchema.path('lastname').validate(function (email) {
+  if (this.doesNotRequireValidation()) return true
+  return email.length
+}, 'Lastname cannot be blank')
+
 UserSchema.path('email').validate(function (email, fn) {
   var User = mongoose.model('User')
   if (this.doesNotRequireValidation()) fn(true)

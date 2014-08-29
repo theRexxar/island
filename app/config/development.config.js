@@ -6,10 +6,10 @@ var config = {
   APP      : {
     name : 'Hireable'
   },
-  BASE_API_HOST : 'http://api.hireable.com',
-  CDN_HOST : 'http://cdn.hireable.com',
+  BASE_API_HOST : 'http://api.hireable.com:6789',
+  CDN_HOST : 'http://cdn.hireable.com:8080',
   SERVER: {
-    port: 3001,
+    port: 9876,
     hostname: process.env.HOSTNAME || '127.0.0.1',
   },
   Db: {
@@ -27,10 +27,21 @@ var config = {
     passReqToCallback: true
   },
   LINKEDIN: {
-    clientID: process.env.LINKEDIN_ID || '77chexmowru601',
-    clientSecret: process.env.LINKEDIN_SECRET || 'szdC8lN2s2SuMSy8',
+    clientID: process.env.LINKEDIN_ID || '75g6xo0pwnsvyc',
+    clientSecret: process.env.LINKEDIN_SECRET || 'ZHUMAhj2MThIqSEJ',
     callbackURL: '/auth/linkedin/callback',
-    scope: ['r_fullprofile', 'r_emailaddress', 'r_network'],
+    scope: ['r_fullprofile', 'r_emailaddress', 'r_network', 'r_contactinfo', 'w_messages'],
+    oauthToken : 'e9e5b83b-f516-487e-846e-2e47b6dcdc70',
+    oauthSecret : '77bc3329-7a90-45cd-b7a7-63f5155dc1ad',
+    passReqToCallback: true,
+  },
+  LINKEDIN_APPLICANT: {
+    clientID: process.env.LINKEDIN_ID || '75nwmkgxnzhoe8',
+    clientSecret: process.env.LINKEDIN_SECRET || 'EoUkTWAVFcnT9uL9',
+    callbackURL: '/auth/linkedin/callback',
+    scope: ['r_fullprofile', 'r_emailaddress', 'r_network', 'r_contactinfo', 'w_messages'],
+    oauthToken : '88484c6c-7fbc-4f7e-a380-69fd0d74b801',
+    oauthSecret : 'a3d1d92a-0ee0-443d-8669-448cbd64dae7',
     passReqToCallback: true
   }
 }

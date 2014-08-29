@@ -4,10 +4,10 @@ var rootPath = path.normalize(__dirname + '/../..')
 var config = {
   ROOT     : rootPath,
   APP      : {
-    name : 'Hireable'
+    name : 'TheHireable'
   },
-  BASE_API_HOST : 'http://api.hireable.com',
-  CDN_HOST : 'http://cdn.hireable.com',
+  BASE_API_HOST : 'http://api.thehireable.com',
+  CDN_HOST : 'http://cdn.thehireable.com',
   SERVER: {
     port: 3001,
     hostname: process.env.HOSTNAME || '127.0.0.1',
@@ -27,10 +27,21 @@ var config = {
     passReqToCallback: true
   },
   LINKEDIN: {
-    clientID: process.env.LINKEDIN_ID || '77chexmowru601',
-    clientSecret: process.env.LINKEDIN_SECRET || 'szdC8lN2s2SuMSy8',
+    clientID: process.env.LINKEDIN_ID || '75g6xo0pwnsvyc',
+    clientSecret: process.env.LINKEDIN_SECRET || 'ZHUMAhj2MThIqSEJ',
     callbackURL: '/auth/linkedin/callback',
-    scope: ['r_fullprofile', 'r_emailaddress', 'r_network'],
+    scope: ['r_fullprofile', 'r_emailaddress', 'r_network', 'r_contactinfo', 'w_messages'],
+    oauthToken : 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx',
+    oauthSecret : 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx',
+    passReqToCallback: true,
+  },
+  LINKEDIN_APPLICANT: {
+    clientID: process.env.LINKEDIN_ID || 'xxxxxxxx',
+    clientSecret: process.env.LINKEDIN_SECRET || 'xxxxxxx',
+    callbackURL: '/auth/linkedin/callback',
+    scope: ['r_fullprofile', 'r_emailaddress', 'r_network', 'r_contactinfo', 'w_messages'],
+    oauthToken : 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx',
+    oauthSecret : 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx',
     passReqToCallback: true
   }
 }

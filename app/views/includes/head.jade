@@ -9,7 +9,7 @@ head(prefix="og: http://ogp.me/ns# findbuzzer: http://ogp.me/ns/apps/findbuzzer#
   //- meta(name="keywords", content=pkg.keywords.join(","))
   meta(name="description", content=pkg.description)
 
-  link(href=config.cdn_assets + "/favicon.png", rel="shortcut icon", type="image/x-icon")
+  link(href=CONFIG.CDN_HOST + "/favicon.png", rel="shortcut icon", type="image/x-icon")
   link(href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600' rel='stylesheet' type='text/css')
   // Opengraph tags
   //- meta(property="fb:app_id", content="")
@@ -20,12 +20,11 @@ head(prefix="og: http://ogp.me/ns# findbuzzer: http://ogp.me/ns/apps/findbuzzer#
   meta(property="og:image", content="")
   meta(property="og:site_name", content="#{pkg.name}")
 
-  script(src=config.cdn_assets +'/js/libs/modernizr.custom.js')
+  script(src=CONFIG.CDN_HOST +'/js/libs/modernizr.custom.js')
 
-  link( rel="stylesheet" href=config.cdn_assets + "/css/bootstrap.css" type="text/css")
-  link( rel="stylesheet" href=config.cdn_assets + "/css/buzzer.css" type="text/css")
+  link( rel="stylesheet" href=CONFIG.CDN_HOST + "/css/bootstrap.css" type="text/css")
+  link( rel="stylesheet" href=CONFIG.CDN_HOST + "/css/web.css" type="text/css")
 
-  //[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  //[if lt IE 9]> <script src="js/ie/html5shiv.js"></script> <script src="js/ie/respond.min.js"></script> <script src="js/ie/excanvas.js"></script> <![endif]
+
 body

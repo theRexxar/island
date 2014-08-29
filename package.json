@@ -1,6 +1,6 @@
 {
-  "product_name": "Gokkon",
-  "name": "buzzer",
+  "product_name": "Hireable",
+  "name": "hireable",
   "version": "0.1.0",
   "description": "",
   "main": "server.js",
@@ -11,7 +11,7 @@
   "author": "Hengkiardo <hengki.sihombing@gmail.com> (https://github.com/aredo)",
   "repository": {
     "type": "git",
-    "url": "git@github.com:aredo/buzzer.git"
+    "url": "git@github.com:aredo/hunterland.git"
   },
   "dependencies": {
     "mongoose": "^3.8.9",

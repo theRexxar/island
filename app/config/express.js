@@ -68,8 +68,8 @@ module.exports = function (app, passport) {
     // console.log(req.isAuthenticated());
     res.locals.pkg      = pkg
     res.locals.NODE_ENV = env
+    res.locals.CONFIG   = CONFIG
     res.locals.moment   = require('moment')
-    res.locals.config   = CONFIG
 
     if(_.isObject(req.user)) {
       res.locals.user_session = req.user

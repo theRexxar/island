@@ -96,11 +96,3 @@ exports.create = function (req, res, next) {
     }
   })
 }
-
-
-exports.settingProfile = function (req, res) {
-
-  res.render('settings/profile', {
-    title: 'Findbuzzer - Setting Profile'
-  })
-}

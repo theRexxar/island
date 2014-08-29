@@ -4,10 +4,10 @@ if req.user
     var userID = '#{req.user._id}';
 
 script.
-  window.jQuery || document.write('<script src="#{config.cdn_assets}/js/libs/jquery-2.1.0.min.js"><\/script>')
-script(src=config.cdn_assets + '/js/bootstrap.js')
-script(src=config.cdn_assets + '/js/plugins.js')
-script(src=config.cdn_assets + '/js/buzzer.js')
+  window.jQuery || document.write('<script src="#{CONFIG.CDN_HOST}/js/libs/jquery-2.1.0.min.js"><\/script>')
+script(src=CONFIG.CDN_HOST + '/js/bootstrap.js')
+script(src=CONFIG.CDN_HOST + '/js/plugins.js')
+script(src=CONFIG.CDN_HOST + '/js/buzzer.js')
 
 if NODE_ENV == 'production'
   script.
