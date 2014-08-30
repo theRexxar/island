@@ -7,7 +7,7 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 var CreateUpdatedAt = require('mongoose-timestamp')
 var crypto = require('crypto')
-var oAuthTypes = ['twitter', 'facebook', 'google']
+var oAuthTypes = ['linkedin', 'google']
 /**
  * User Schema
  */
@@ -15,7 +15,6 @@ var oAuthTypes = ['twitter', 'facebook', 'google']
 var UserSchema = new Schema({
   username: {
     type: String,
-    require: true,
     trim: true
   },
   email: {
@@ -34,12 +33,15 @@ var UserSchema = new Schema({
     trim: true
   },
   photo_profile: String,
-  bod: {
-    type: Date,
-  },
-  gender: {
+  headline : String,
+  time_zone: String,
+  report_frequency: {
     type: String,
-    enum: ['male', 'female']
+    enum: [ 'daily', 'weekly', 'never']
+  },
+  receives_new_candidate_notification: {
+    type: Boolean,
+    default: false
   },
   city: {
     type: String,
@@ -60,6 +62,7 @@ var UserSchema = new Schema({
   tokens: [],
   provider: {
     type: String,
+    enum: [ 'local', 'google', 'linkedin'],
     default: 'local'
   },
   hashed_password: {
