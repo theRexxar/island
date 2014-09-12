@@ -26,7 +26,6 @@ exports.authCallback = login
 /**
  * Show login form
  */
-
 exports.login = function (req, res) {
   if(req.isAuthenticated()){
     res.redirect('/dashboard')
@@ -41,7 +40,6 @@ exports.login = function (req, res) {
 /**
  * Show sign up form
  */
-
 exports.signup = function (req, res) {
   if(req.isAuthenticated()){
     res.redirect('/dashboard')
@@ -52,11 +50,9 @@ exports.signup = function (req, res) {
     })
   }
 }
-
 /**
  * Logout
  */
-
 exports.logout = function (req, res) {
   req.logout()
   req.flash('success', { msg: 'Success! You are logout' });
@@ -95,4 +91,9 @@ exports.create = function (req, res, next) {
       })
     }
   })
+}
+
+
+exports.linkedinCallback = function (req, res, next) {
+  if (req.query.resource === 'user')
 }

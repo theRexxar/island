@@ -21,5 +21,7 @@ Route
     failureRedirect: '/login',
     failureFlash: true
   }), UsersController.session)
+  .get('/auth/linkedin', passport.authenticate('linkedin', { state: 'SOME STATE' }))
+  .get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/login' }), UsersController.linkedinCallback)
   .get('/', PagesController.home)
 module.exports = Route

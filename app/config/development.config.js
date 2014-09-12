@@ -13,7 +13,7 @@ var config = {
     hostname: process.env.HOSTNAME || '127.0.0.1',
   },
   Db: {
-    url: 'mongodb://localhost/hireable_prod'
+    url: 'mongodb://localhost/hireable_dev'
   },
   SESSION_SECRET: process.env.SESSION_SECRET || 'Your Session Secret goes here',
   Mailgun: {
@@ -30,7 +30,7 @@ var config = {
     clientID: process.env.LINKEDIN_ID || '75g6xo0pwnsvyc',
     clientSecret: process.env.LINKEDIN_SECRET || 'ZHUMAhj2MThIqSEJ',
     callbackURL: '/auth/linkedin/callback?resource=user',
-    scope: ['r_fullprofile', 'r_emailaddress', 'r_network', 'r_contactinfo', 'w_messages'],
+    scope: ['r_fullprofile', 'r_emailaddress', 'r_contactinfo'],
     oauthToken : 'e9e5b83b-f516-487e-846e-2e47b6dcdc70',
     oauthSecret : '77bc3329-7a90-45cd-b7a7-63f5155dc1ad',
     passReqToCallback: true,
