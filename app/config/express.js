@@ -2,7 +2,8 @@
 
 var CONFIG = require('./index')
 
-var logger           = require('morgan')
+var express          = require('express')
+var morgan           = require('morgan')
 var path             = require('path')
 var responseTime     = require('response-time')
 var methodOverride   = require('method-override')
@@ -14,6 +15,7 @@ var session          = require('express-session')
 var MongoStore       = require('connect-mongo')({ session: session })
 var errorHandler     = require('errorhandler')
 var expressValidator = require('express-validator')
+var helmet           = require('helmet')
 var env              = process.env.NODE_ENV || 'development'
 var flash            = require('express-flash')
 var _                = require('lodash')
@@ -28,17 +30,33 @@ module.exports = function (app, passport) {
   app.set('views', path.join(__dirname, '../../app/views'))
   app.set('view engine', 'jade')
 
-  // app.enable('trust proxy')
-  app.disable('x-powered-by')
+  if (app.get('env') == 'production') {
 
-  app.use(multer())
+    app.use(morgan('combined', {
+      skip: function (req, res) { return res.statusCode < 400 },
+      stream: require('fs').createWriteStream( app.config.root + '/access.log', {flags: 'a'})
+    }))
 
-  if (env === 'development') {
-    app.use(logger('dev'))
-  } else {
-    app.use(logger())
+    app.use(compression({
+      filter: function (req, res) { return /json|text|javascript|css/.test(res.getHeader('Content-Type')) },
+      level: 9
+    }))
+
+    app.enable('view cache')
+
+  } else if ( app.get('env') == 'development' ) {
+    app.use(morgan('dev'))
   }
 
+  app.use(helmet.crossdomain({ caseSensitive: true }));
+  app.use(helmet.xssFilter());
+  app.use(helmet.xframe('sameorigin'));
+  app.use(helmet.nosniff());
+  app.use(helmet.nocache({ noEtag: true }));
+  app.disable('x-powered-by');
+  // app.enable('trust proxy')
+
+  app.use(multer())
   app.use(bodyParser.urlencoded({extended: true}))
   app.use(bodyParser.json())
   app.use(expressValidator())
@@ -47,6 +65,10 @@ module.exports = function (app, passport) {
   app.use(cookieParser('KPjcJ6DIy6972ZRPSrNXiNdB0WxgP4oJKAI3cagWlEAVk'))
 
   app.use(session({
+    name: 'gushcentral.sid',
+    genid: function(req) {
+      return require('node-uuid').v4() // use UUIDs for session IDs
+    },
     resave: true,
     saveUninitialized: true,
     secret: CONFIG.SESSION_SECRET,
@@ -66,10 +88,12 @@ module.exports = function (app, passport) {
   app.use(require(CONFIG.ROOT + '/app/helper/views-helper')(pkg.name));
   app.use(function (req, res, next) {
     // console.log(req.isAuthenticated());
-    res.locals.pkg      = pkg
-    res.locals.NODE_ENV = env
-    res.locals.CONFIG   = CONFIG
-    res.locals.moment   = require('moment')
+    res.locals.pkg       = pkg
+    res.locals.NODE_ENV  = env
+    res.locals.CONFIG    = CONFIG
+    res.locals.moment    = require('moment')
+    res.locals._         = _
+    res.locals.validator = require('validator');
 
     if(_.isObject(req.user)) {
       res.locals.user_session = req.user
@@ -77,72 +101,78 @@ module.exports = function (app, passport) {
     next()
   })
 
+  app.use(express.static(app.config.root + '/tmp'))
+  if ( app.get('env') == 'development' ) {
+    app.use(express.static(app.config.root + '/public'))
+  } else {
+    var cacheTime = 86400000*7;     // 7 days
+    app.use(express.static(app.config.root + '/public',{ maxAge: cacheTime }));
+
+  }
+
   /** ROUTES Apps */
-  app.use(require(CONFIG.ROOT + '/routes'))
+  app.use('/api/v1', require(CONFIG.ROOT + '/app/routes/api'))
+  app.use('/', require(CONFIG.ROOT + '/app/routes/web'))
 
-  app.use(function handleNotFound(req, res, next){
-    res.status(404)
-
-    if (req.accepts('html')) {
-      res.render('404', { url: req.url, error: '404 Not found' })
-      return
+  // assume "not found" in the error msgs
+  // is a 404. this is somewhat silly, but
+  // valid, you can do whatever you like, set
+  // properties, use instanceof etc.
+  app.use(function(err, req, res, next){
+    // treat as 404
+    if (err.message
+      && (~err.message.indexOf('not found')
+      || (~err.message.indexOf('Cast to ObjectId failed')))) {
+      return next()
     }
+    // log it
+    // send emails if you want
 
-    if (req.accepts('json')) {
-      res.send({ error: 'Not found' })
-      return
+    if(req.url) {
+      var path = req.url.split('/')[1];
+      if (/api/i.test(path)) {
+
+        var error_results     = {}
+
+        error_results.message = err.stack;
+
+        error_results.status  = 500;
+
+        error_results.id      = require('node-uuid').v4()
+
+        return res.status(500).send(error_results)
+      }
     }
+    // console.error(err.stack)
 
-    res.type('txt').send('Not found')
+    console.log(err)
+
+    // error page
+    res.status(500).render('500', { error: err })
   })
 
-  // will print stacktrace
+  // assume 404 since no middleware responded
+  app.use(function(req, res, next){
+
+    if(req.route) {
+      if (req.route.path === '/api/v1/*') {
+        var error_results     = {}
+        error_results.id      = require('node-uuid').v4()
+        error_results.message = 'Sorry, that page does not exist'
+        error_results.code    = 34 // Corresponds with an HTTP 404 - the specified resource was not found.
+        return res.status(404).json(error_results)
+      }
+    }
+
+    res.status(404).render('404', {
+      url: req.originalUrl,
+      error: 'Not found'
+    })
+  })
+
   if (app.get('env') === 'development') {
+    app.locals.pretty = true
     app.use(responseTime())
     app.use(errorHandler())
-  } else {
-    app.use(compression({
-      filter: function (req, res) {
-        return /json|text|javascript|css/.test(res.getHeader('Content-Type'))
-      },
-      level: 9
-    }))
-
-    app.use(function logErrors(err, req, res, next){
-      if (err.status === 404) {
-        return next(err)
-      }
-
-      console.error(err.stack)
-      next(err)
-    })
-
-    app.use(function respondError(err, req, res, next){
-      var status, message
-
-      status = err.status || 500
-      res.status(status)
-
-      message = ((err.productionMessage && err.message) ||
-        err.customProductionMessage)
-
-      if (!message) {
-        if (status === 403) {
-          message = 'Not allowed'
-        } else {
-          message = 'Oops, there was a problem!'
-        }
-      }
-
-      if (req.accepts('json')) {
-        res.send({error: message})
-        return
-
-      } else {
-        res.type('txt').send(message + '\n')
-        return
-      }
-
-    })
   }
 }

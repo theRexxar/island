@@ -47,9 +47,9 @@ passport.use(new LocalStrategy({
 
 // Sign in with LinkedIn.
 
-passport.use(new LinkedInStrategy(CONFIG.LINKEDIN_APPLICANT, function(req, accessToken, refreshToken, profile, done) {
+passport.use(new LinkedInStrategy(CONFIG.LINKEDIN, function(req, accessToken, refreshToken, profile, done) {
   if (req.user) {
-    User.findOne({ linkedin: profile.id }, function(err, existingUser) {
+    User.findOne({ 'linkedin.id': profile.id }, function(err, existingUser) {
       if (existingUser) {
         req.flash('errors', { msg: 'There is already a LinkedIn account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
         done(err);
@@ -68,7 +68,7 @@ passport.use(new LinkedInStrategy(CONFIG.LINKEDIN_APPLICANT, function(req, acces
     });
   } else {
 
-    User.findOne({ linkedin: profile.id }, function(err, existingUser) {
+    User.findOne({ 'linkedin.id': profile.id }, function(err, existingUser) {
 
       if (existingUser) return done(null, existingUser);
 
@@ -96,8 +96,8 @@ passport.use(new LinkedInStrategy(CONFIG.LINKEDIN_APPLICANT, function(req, acces
           user.bio           = profile._json.summary
           user.country       = profile._json.location.country.code.toUpperCase()
 
-          user.save(function(err) {
-            done(err, user)
+          user.save(function(err, newUser) {
+            done(err, newUser)
           });
         }
       });

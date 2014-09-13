@@ -1,6 +1,6 @@
 "use strict";
 
-var CONFIG   = require('./app/config')
+var CONFIG   = require('../config')
 var express  = require('express')
 var Route    = express.Router()
 var passport = require('passport')
@@ -15,6 +15,7 @@ Route
   .get('/login', UsersController.login)
   .get('/signup', UsersController.signup)
   .get('/logout', UsersController.logout)
+  .get('/recruiter-registrations/welcome', UsersController.firstAddCompany)
   .post('/users/create', UsersController.create)
   .post('/users/session',
     passport.authenticate('local', {

@@ -6,7 +6,7 @@ var config = {
   APP      : {
     name : 'Hireable'
   },
-  BASE_API_HOST : 'http://api.hireable.com:6789',
+  BASE_API_HOST : 'http://api.hireable.dev:6789',
   CDN_HOST : 'http://cdn.hireable.com:8080',
   SERVER: {
     port: 9876,

@@ -46,13 +46,13 @@
     "request": "^2.40.0",
     "validator": "^3.17.1",
     "moment": "^2.8.2",
-    "lusca": "^1.0.1",
     "mongoose-timestamp": "^0.3.0",
     "mongoose-url-slugs": "0.0.9",
     "mongoose-types": "^1.0.3",
     "mongoose-validator": "^1.0.0",
     "nifty-mongoose-types": "0.0.3",
     "node-uuid": "^1.4.1",
-    "prettyjson": "^1.0.0"
+    "prettyjson": "^1.0.0",
+    "helmet": "^0.4.1"
   }
 }

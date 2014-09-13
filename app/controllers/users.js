@@ -54,7 +54,7 @@ exports.signup = function (req, res) {
  * Logout
  */
 exports.logout = function (req, res) {
-  req.logout()
+  req.logout();
   req.flash('success', { msg: 'Success! You are logout' });
   res.redirect('/')
 }
@@ -93,7 +93,20 @@ exports.create = function (req, res, next) {
   })
 }
 
+exports.firstAddCompany = function (req, res, next) {
+
+  res.render('users/first-setup-company', {
+    title: 'Sign up',
+  })
+}
+
 
 exports.linkedinCallback = function (req, res, next) {
-  if (req.query.resource === 'user')
+
+  if (req.query.resource == 'user') {
+
+    res.redirect(301, '/recruiter-registrations/welcome')
+
+  } else {
+  }
 }

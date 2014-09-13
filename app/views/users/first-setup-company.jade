@@ -1,0 +1,37 @@
+extends ../layouts/default
+
+
+block main
+
+  include ../includes/logo
+
+  .aside-xxl.pull-none.m-auto.m-t-lg
+
+    .panel.panel-default.padder
+
+      .bg-warning-ltest.m-t-n-sm.m-l-n.m-r-n.text-dark.title-message
+        .wrapper-xxs.m-t-sm.b-b.m-b-sm
+          h4.m-t-xs.m-b-xs.text-center.f-bold Awesome!
+          p.text-center Now tell us a bit more about the company you will be hiring for:
+
+      form.col-lg-12.m-t-md.m-b-md.form-first-create-company(action="" method="post" role="form")
+        input(type='hidden' name='_csrf' value=csrf_token)
+        input(type='hidden' name="userId" value=req.user._id id="userId")
+        .list-group
+          .list-group-item
+            .input-group
+              span.input-group-addon
+                i.fa.fa-building-o
+              input.form-control.no-border(type='text' autocomplete="off" placeholder='Company Name' name="name")
+          .list-group-item
+            .input-group
+              span.input-group-addon
+                i.fa.fa-link
+              input.form-control.no-border(type='text' placeholder='Company Website' name="website_url")
+
+        p.text-left.m-b-md By creating an account you accept the &nbsp;
+          a(href="#") term of use.
+
+        button.pull-left.btn.btn-md.btn-primary.btn-block.btn-login(type='submit') CREATING COMPANY
+
+      div.clearfix
