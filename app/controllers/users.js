@@ -7,6 +7,7 @@ var async       = require('async');
 var utility     = require('utility');
 var crypto      = require('crypto');
 var errorHelper = require(CONFIG.ROOT + '/app/helper/errors');
+var passport    = require('passport')
 
 var login = function (req, res) {
   var redirectTo = req.session.returnTo ? req.session.returnTo : '/'
@@ -35,6 +36,31 @@ exports.login = function (req, res) {
       message: req.flash('error')
     })
   }
+}
+
+exports.postLogin = function (req, res, next) {
+  req.assert('email', 'Email is not valid').isEmail();
+  req.assert('password', 'Password cannot be blank').notEmpty();
+
+  var errors = req.validationErrors();
+
+  if (errors) {
+    req.flash('errors', errors);
+    return res.redirect('/login');
+  }
+
+  passport.authenticate('local', function(err, user, info) {
+    if (err) return next(err);
+    if (!user) {
+      req.flash('errors', { msg: info.message });
+      return res.redirect('/login');
+    }
+    req.logIn(user, function(err) {
+      if (err) return next(err);
+      req.flash('success', { msg: 'Success! You are logged in.' });
+      res.redirect(req.session.returnTo || '/');
+    });
+  })(req, res, next);
 }
 
 /**

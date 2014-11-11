@@ -1,18 +1,9 @@
 extends layouts/default
 
 block main
-  div.navbar.navbar-fixed-top(role='navigation')
-    .navbar-header.pull-none.container
-      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a#brandLogo.navbar-brand(href='/')
-        img.m-r-xs(src=CONFIG.CDN_HOST + "/img/app.png" width="52", height="52")
-        span.text-dark.text-xl.font-bold #{pkg.product_name}
-
-  #home.m-t-xl
-    h1 Recruiting made Hireable
-    p.text-md A beautifully simple tool to advertise jobs and make better hiring decisions with your team.
+  //- img(src=CONFIG.CDN_HOST + "/img/company.jpg", alt="")
+  #home.m-t-xl.container
+    .intro__details
+      h1 Hireable for the talent war
+      p.text-md A cutting-edge hiring platform to advertise jobs and make better for hiring a good talent.
 

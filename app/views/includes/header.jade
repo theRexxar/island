@@ -1,20 +1,19 @@
-  //- .collapse.navbar-collapse
-  //-   ul.nav.navbar-nav.navbar-right.m-n.hidden-xs.nav-user.buzzer
-  //-     - if (req.isAuthenticated())
-  //-       li.dropdown
-  //-         a(href="/#{req.user.username}" class="dropdown-toggle" title="#{req.user.firstname} #{req.user.lastname}")
-  //-           span.thumb-sm.avatar.pull-left
-  //-             if user_session.photo_profile
-  //-               img(src=user_session.photo_profile, height=40, width=40)
-  //-             else
-  //-               img(src="#{user_session.gravatar()}", height=40, width=40)
-  //-     - else
-  //-       li
-  //-         a.btn.btn-md.btn-twitter(href="/auth/twitter")
-  //-           i.fa.fa-fw.fa-twitter
-  //-           | &nbsp; Sign in with Twitter
-  //-       li
-  //-         a.btn.btn-md.btn-facebook(href="/auth/facebook")
-  //-           i.fa.fa-fw.fa-facebook
-  //-           | &nbsp; Sign in with Facebook
+header#top.navbar.navbar-static-top(role='banner')
+  .container
+    .navbar-header
+      button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='.bs-navbar-collapse')
+        span.sr-only
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a#brandLogo.navbar-brand(href='/')
+        img.m-r-xs(src=CONFIG.CDN_HOST + "/img/app.png" width="52", height="52")
+        span.text-xl.font-bold #{pkg.product_name}
 
+    nav.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
+      ul.nav.navbar-nav.navbar-right
+        li
+          if (req.isAuthenticated())
+            a(href='/logout') Logout
+          else
+            a(href='/login') Sign In

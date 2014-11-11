@@ -1,6 +1,6 @@
 "use strict";
 
-var CONFIG = require('./index')
+var CONFIG           = require('./index')
 
 var express          = require('express')
 var morgan           = require('morgan')
@@ -16,6 +16,7 @@ var MongoStore       = require('connect-mongo')({ session: session })
 var errorHandler     = require('errorhandler')
 var expressValidator = require('express-validator')
 var helmet           = require('helmet')
+var lusca             = require('lusca')
 var env              = process.env.NODE_ENV || 'development'
 var flash            = require('express-flash')
 var _                = require('lodash')
@@ -83,6 +84,8 @@ module.exports = function (app, passport) {
   app.use(passport.session({
     maxAge: new Date(Date.now() + 3600000)
   }))
+
+  app.use(lusca.csrf());
   app.use(flash())
 
   app.use(require(CONFIG.ROOT + '/app/helper/views-helper')(pkg.name));

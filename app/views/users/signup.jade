@@ -3,61 +3,59 @@ extends ../layouts/default
 
 
 block main
+  .container
+    .panel.panel-default.col-lg-9.pull-none.m-auto.m-t-lg.r2x
+      .row
+        .col-md-6.col-sm-6.flag-section.flag-section-top
 
-  include ../includes/logo
+          .panel-body.m-r-md
+            h4.text-center.f-bold Create an account
+            p.text-center Fill out the information below to start using Workable.
 
-  .panel.panel-default.col-lg-9.pull-none.m-auto.m-t-lg
-    .flag
-      .aside-xl.flag-section.flag-section-top
+            form.m-t-sm.m-b-lg.form-signup(action="/signup", method="post", role="form")
 
-        .panel-body.m-r-md
-          h4.text-center.f-bold Create an account
-          p.text-center Fill out the information below to start using Workable.
+              include ../includes/messages
 
-          form.m-t-sm.m-b-lg.form-signup(action="/users/create", method="post", role="form")
+              input(type='hidden', name='_csrf', value="#{_csrf}")
+              p.col-sm-offset-2.error= message
+              .list-group
+                .list-group-item
+                  input.form-control.box-shadow-none.no-border(type='text', autocomplete="off", name="firstname", placeholder='Firstname', value=user.firstname)
+                .list-group-item
+                  input.form-control.box-shadow-none.no-border(type='text', autocomplete="off", name="lastname", placeholder='Lastname', value=user.lastname)
+                .list-group-item
+                  input.form-control.box-shadow-none.no-border(type='email', autocomplete="off", name="email", placeholder='Email', value=user.email)
+                .list-group-item
+                  input.form-control.box-shadow-none.no-border(type='password', autocomplete="off", name="password", placeholder='Password')
+              //.checkbox.m-b
+                label
+                  input(type='checkbox') | Agree the a(href='#') terms and policy
+              button.btn.btn-md.m-auto.btn-primary.btn-block(type='submit') Sign Up
 
-            include ../includes/messages
+        .col-md-6.col-sm-6.flag-section.flag-section-top.b-l
+          .panel-body
 
-            input(type='hidden', name='_csrf', value="#{csrf_token}")
-            p.col-sm-offset-2.error= message
-            .list-group
-              .list-group-item
-                input.form-control.no-border(type='text', autocomplete="off", name="firstname", placeholder='Firstname', value=user.firstname)
-              .list-group-item
-                input.form-control.no-border(type='text', autocomplete="off", name="lastname", placeholder='Lastname', value=user.lastname)
-              .list-group-item
-                input.form-control.no-border(type='email', autocomplete="off", name="email", placeholder='Email', value=user.email)
-              .list-group-item
-                input.form-control.no-border(type='password', autocomplete="off", name="password", placeholder='Password')
-            //.checkbox.m-b
-              label
-                input(type='checkbox') | Agree the a(href='#') terms and policy
-            button.btn.btn-md.m-auto.btn-primary.btn-block(type='submit') Sign Up
+            h4.text-center.f-bold Quick setup
+            p.text-center Sign up with your social account. Fast and secure
 
-      .aside-xl.flag-section.flag-section-top.b-l
-        .panel-body
+            .m-t-md.padder-v.text-center
+              a#linkedin-signin.btn.btn-lg.btn-linkedin(data-mechanism='linkedin', href='/auth/linkedin?resource=user')
+                i.fa.fa-linkedin-square &nbsp;
+                span Sign up with LinkedIn
+                  sup ®
 
-          h4.text-center.f-bold Quick setup
-          p.text-center Sign up with your social account. Fast and secure
+            .b-b
 
-          .m-t-md.padder-v.text-center
-            a#linkedin-signin.btn.btn-lg.btn-linkedin(data-mechanism='linkedin', href='/auth/linkedin?resource=user')
-              i.fa.fa-linkedin-square &nbsp;
-              span Sign up with LinkedIn
-                sup ®
-
-          .b-b
-
-          .padder-v.text-center
-            a.btn.btn-lg.btn-google(data-mechanism='google', href='/auth/google?resource=user')
-              i.fa.fa-fw.fa-google
-              span Sign in with Google
-                sup ®
+            .padder-v.text-center
+              a.btn.btn-lg.btn-google(data-mechanism='google', href='/auth/google?resource=user')
+                i.fa.fa-fw.fa-google
+                span Sign in with Google
+                  sup ®
 
 
 
-          p.col-lg-12.m-t-xl.no-padder.pull-none.m-auto.text-center Don't worry: we won't post anything on your timeline without your permission and your personal details are kept private.
+            p.col-lg-12.m-t-xl.no-padder.pull-none.m-auto.text-center Don't worry: we won't post anything on your timeline without your permission and your personal details are kept private.
 
-  p.m-t-sm.text-muted.text-center
-    small Already have a #{pkg.product_name} account? &nbsp;
-    a(href='/login') Sign in ›
+    p.m-t-sm.text-muted.text-center
+      small Already have a #{pkg.product_name} account? &nbsp;
+      a(href='/login') Sign in ›

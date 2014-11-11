@@ -20,16 +20,12 @@ passport.deserializeUser(function(id, done) {
 
 // use local strategy
 passport.use(new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password'
-  },
-  function(email, password, done) {
-
+  usernameField: 'email',
+  passwordField: 'password'
+}, function(email, password, done) {
     User.findOne( { email: email } , function (err, user) {
 
-      if (err) {
-        return done(err)
-      }
+      if (err) { return done(err) }
 
       if (!user) {
         return done(null, false, { message: 'Your email not register' })
@@ -38,6 +34,8 @@ passport.use(new LocalStrategy({
       if (!user.authenticate(password)) {
         return done(null, false, { message: 'invalid login or password' })
       }
+
+      // User.updateLastLogin(user._id)
 
       return done(null, user)
     })

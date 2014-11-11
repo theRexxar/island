@@ -1,3 +1,4 @@
+"use strict";
 
 exports.randomString = function (length) {
   var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHUJKLMNOPQRSTUVWXYZ';

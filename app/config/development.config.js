@@ -1,3 +1,5 @@
+"use strict";
+
 var path = require('path')
 var rootPath = path.normalize(__dirname + '/../..')
 
@@ -6,6 +8,7 @@ var config = {
   APP      : {
     name : 'Hireable'
   },
+  BASE_HOST : 'http://thehireable.dev:9876',
   BASE_API_HOST : 'http://api.hireable.dev:6789',
   CDN_HOST : 'http://cdn.hireable.com:8080',
   SERVER: {

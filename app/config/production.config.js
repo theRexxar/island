@@ -1,13 +1,16 @@
+"use strict";
+
 var path = require('path')
 var rootPath = path.normalize(__dirname + '/../..')
 
 var config = {
   ROOT     : rootPath,
   APP      : {
-    name : 'TheHireable'
+    name : 'Torso'
   },
-  BASE_API_HOST : 'http://api.thehireable.com',
-  CDN_HOST : 'http://cdn.thehireable.com',
+  BASE_HOST : 'http://torso.com',
+  BASE_API_HOST : 'http://api.torso.com',
+  CDN_HOST : 'http://cdn.torso.com',
   SERVER: {
     port: 3001,
     hostname: process.env.HOSTNAME || '127.0.0.1',

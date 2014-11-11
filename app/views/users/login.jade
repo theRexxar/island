@@ -3,42 +3,46 @@ extends ../layouts/default
 
 block main
 
-  include ../includes/logo
+  .container
 
-  .aside-xl.pull-none.m-auto.m-t-lg
-    .panel.panel-default.padder
-      if message != ""
-        .alert.alert-danger.animated.fadeIn
-          button.close(type='button', data-dismiss='alert') ×
-          div= message
+    .signin-block.pull-none.m-auto.m-t-lg
+      .panel.panel-default.padder.r2x
 
-      .m-t-md.padder-v.text-center
-        a#linkedin-signin.btn.btn-lg.btn-linkedin(data-mechanism='linkedin', href='/auth/linkedin?resource=user')
-          i.fa.fa-linkedin-square &nbsp;
-          span Sign up with LinkedIn
-            sup ®
+        .m-t-md.padder-v.text-center
+          a#linkedin-signin.btn.btn-lg.btn-linkedin(data-mechanism='linkedin', href='/auth/linkedin?resource=user')
+            i.fa.fa-linkedin-square &nbsp;
+            span Sign up with LinkedIn
+              sup ®
 
-      .padder-v.text-center
-        a.btn.btn-lg.btn-google(data-mechanism='google', href='/auth/google?resource=user')
-          i.fa.fa-fw.fa-google
-          span Sign in with Google
-            sup ®
+        .padder-v.text-center
+          a.btn.btn-lg.btn-google(data-mechanism='google', href='/auth/google?resource=user')
+            i.fa.fa-fw.fa-google
+            span Sign in with Google
+              sup ®
 
-      form.col-lg-12.m-t-md.m-b-md.form-signin(action="/users/session", method="post", role="form")
-        input(type='hidden', name='_csrf', value="#{csrf_token}")
-        .list-group
-          .list-group-item
-            input.form-control.no-border(type='text', autocomplete="off" placeholder='Email', name="email")
-          .list-group-item
-            input.form-control.no-border(type='password', placeholder='Password', name="password")
+        form.col-lg-12.m-t-md.m-b-md.form-signin(action="/users/session", method="post", role="form")
+          if messages.errors
+            .alert.alert-danger.animated.fadeIn
+              button.close(type='button', data-dismiss='alert') ×
+              for error in messages.errors
+                div= error.msg
 
-        button.pull-left.btn.btn-md.btn-primary.btn-block.btn-login(type='submit') Sign In
+          input(type='hidden', name='_csrf', value="#{_csrf}")
+          .list-group
+            .list-group-item
+              input.form-control.box-shadow-none.no-border(type='text', autocomplete="off" placeholder='Email', name="email")
+            .list-group-item
+              input.form-control.box-shadow-none.no-border(type='password', placeholder='Password', name="password")
 
-        a.block.pull-right(href="forgot-password" class="forgot-password") Forgot Password
+          button.pull-left.btn.btn-md.btn-primary.btn-block.btn-login(type='submit') Sign In
 
-      div.clearfix
+          a.block.pull-right(href="forgot-password" class="forgot-password") Forgot Password
 
-  p.m-t-md.text-muted.text-center
-    small Don't have a Hireable account?
-  p.text-muted.text-center
-    a(href='/signup') Sign up now for free ›
+          .clearfix
+
+        div.clearfix
+
+    p.m-t-md.text-muted.text-center
+      small Don't have a Hireable account?
+    p.text-muted.text-center
+      a(href='/signup') Sign up now for free ›
