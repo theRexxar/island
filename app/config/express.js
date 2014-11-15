@@ -1,7 +1,6 @@
 "use strict";
 
 var CONFIG           = require('./index')
-
 var express          = require('express')
 var morgan           = require('morgan')
 var path             = require('path')
@@ -16,10 +15,12 @@ var MongoStore       = require('connect-mongo')({ session: session })
 var errorHandler     = require('errorhandler')
 var expressValidator = require('express-validator')
 var helmet           = require('helmet')
-var lusca             = require('lusca')
+var lusca            = require('lusca')
 var env              = process.env.NODE_ENV || 'development'
 var flash            = require('express-flash')
 var _                = require('lodash')
+
+JSON.mask            = require('json-mask')
 
 module.exports = function (app, passport) {
 
@@ -90,7 +91,6 @@ module.exports = function (app, passport) {
 
   app.use(require(CONFIG.ROOT + '/app/helper/views-helper')(pkg.name));
   app.use(function (req, res, next) {
-    // console.log(req.isAuthenticated());
     res.locals.pkg       = pkg
     res.locals.NODE_ENV  = env
     res.locals.CONFIG    = CONFIG
@@ -99,7 +99,7 @@ module.exports = function (app, passport) {
     res.locals.validator = require('validator');
 
     if(_.isObject(req.user)) {
-      res.locals.user_session = req.user
+      res.locals.user_session = JSON.mask(req.user, '_id,email,firstname,lastname,photo_profile,country');
     }
     next()
   })
@@ -114,7 +114,6 @@ module.exports = function (app, passport) {
   }
 
   /** ROUTES Apps */
-  app.use('/api/v1', require(CONFIG.ROOT + '/app/routes/api'))
   app.use('/', require(CONFIG.ROOT + '/app/routes/web'))
 
   // assume "not found" in the error msgs

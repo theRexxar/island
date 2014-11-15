@@ -1,7 +1,7 @@
 if req.user
   script.
-    var isLogin = true;
-    var userID = '#{req.user._id}';
+    var isLogin = true
+    var currentUser = !{JSON.stringify(user_session)};
 
 script.
   window.jQuery || document.write('<script src="#{CONFIG.CDN_HOST}/js/libs/jquery-2.1.0.min.js"><\/script>')
