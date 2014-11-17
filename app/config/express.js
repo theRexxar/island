@@ -96,6 +96,7 @@ module.exports = function (app, passport) {
     res.locals.CONFIG    = CONFIG
     res.locals.moment    = require('moment')
     res.locals._         = _
+    res.locals.utility   = require('utility');
     res.locals.validator = require('validator');
 
     if(_.isObject(req.user)) {

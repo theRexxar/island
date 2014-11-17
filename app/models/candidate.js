@@ -31,4 +31,4 @@ var Canditate = new mongoose.Schema({
 
 Canditate.plugin(CreateUpdatedAt)
 
-mongoose.model('Canditate', Canditate)
+module.exports = mongoose.model('Canditate', Canditate)

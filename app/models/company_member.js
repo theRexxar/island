@@ -20,4 +20,4 @@ var CompanyMember = new mongoose.Schema({
 
 CompanyMember.plugin(CreateUpdatedAt)
 
-mongoose.model('CompanyMember', CompanyMember)
+module.exports = mongoose.model('CompanyMember', CompanyMember)

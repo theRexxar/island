@@ -42,4 +42,4 @@ var Position = new mongoose.Schema({
 
 Position.plugin(CreateUpdatedAt)
 
-mongoose.model('Position', Position)
+module.exports = mongoose.model('Position', Position)

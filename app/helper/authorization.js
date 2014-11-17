@@ -20,6 +20,20 @@ exports.hasLogin = function (req, res, next) {
 }
 
 
+exports.hasCreateCompany = function (req, res, next) {
+  if (req.isAuthenticated()) {
+    if(req.user.company) {
+      res.redirect('/dashboards')
+    } else {
+      next()
+    }
+  } else {
+    res.redirect('/login')
+  }
+}
+
+
+
 /*
  *  User authorization routing middleware
  */

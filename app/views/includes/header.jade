@@ -1,19 +1,77 @@
-header#top.navbar.navbar-static-top(role='banner')
-  .container
-    .navbar-header
-      button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='.bs-navbar-collapse')
-        span.sr-only
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a#brandLogo.navbar-brand(href='/')
-        img.m-r-xs(src=CONFIG.CDN_HOST + "/img/app.svg" width="42", height="42")
-        span.text-xl.font-bold #{pkg.product_name}
+mixin headerHome
+  header#top.navbar.navbar-static-top.navbar-lpages(role='banner')
+    .container
+      .navbar-header
+        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='.bs-navbar-collapse')
+          span.sr-only
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.brandLogo.navbar-brand(href='/')
+          img.m-r-xs(src=CONFIG.CDN_HOST + "/img/app.svg" width="42", height="42")
+          span.text-xl.font-bold #{pkg.product_name}
 
-    nav.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
-      ul.nav.navbar-nav.navbar-right
-        li
-          if (req.isAuthenticated())
-            a(href='/logout') Logout
-          else
-            a(href='/login') Sign In
+      nav.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
+        ul.nav.navbar-nav.navbar-right
+          li
+            if (req.isAuthenticated())
+              a(href='/logout') Logout
+            else
+              a(href='/login') Sign In
+
+mixin headerDashboard
+  header#top.navbar.navbar-static-top.navbar-dashboard.b-b(role='banner')
+    .container-fluid
+      .navbar-header
+        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='.bs-navbar-collapse')
+          span.sr-only
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.brandLogo.navbar-brand(href='/')
+          img.m-r-xs(src=CONFIG.CDN_HOST + "/img/app.svg" width="42", height="42")
+          span.text-xl.font-bold #{pkg.product_name}
+
+      nav.collapse.navbar-collapse(role='navigation')
+        ul.nav.navbar-nav.b-l.b-r
+          li.active
+            a(href="/dashboard") Dashboard
+          li
+            a(href="/candidates") Candidates
+          li
+            a(href="/agendas") Agendas
+          li
+            a(href="/reports") Repots
+          li
+            a(href="/reports") Activity
+
+        ul.nav.navbar-nav.navbar-right
+          li.dropdown.b-l.b-r
+            a(href="#" class="dropdown-toggle" data-toggle="dropdown")
+              span.thumb-xs.avatar.m-r-sm
+                img(src="https://gravatar.com/avatar/#{utility.md5(req.user.email)}?s=80")
+                span.caret.m-l-xs
+
+              ul.dropdown-menu.animated.fadeInRight
+                span.arrow.top
+                li
+                  a(href="/account/company")
+                    i.fa.fa-key
+                    | &nbsp; Company Profile
+                li
+                  a(href="/members")
+                    i.i.i-user2
+                    | &nbsp; Account Member
+                li
+                  a(href="/account/setting" data-id="534ba99f3ef6615633796894")
+                    i.fa.fa-cog
+                    | &nbsp; My Account
+                li.divider
+                li
+                  a(href="/logout" class="btn-logout")
+                    i.fa.fa-power-off.text-danger
+                    | &nbsp; Logout
+          li
+            a.bg-gray.text-warning(href="#")
+              span.fa.fa-lg.fa-question-circle
+

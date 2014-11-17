@@ -1,10 +1,15 @@
 if req.user
   script.
-    var isLogin = true
-    var currentUser = !{JSON.stringify(user_session)};
+    var isLogin=true;
+    var currentUser=!{JSON.stringify(user_session)};
+else
+  script.
+    var isLogin=true;
+    var currentUser=null;
 
 script.
   window.jQuery || document.write('<script src="#{CONFIG.CDN_HOST}/js/libs/jquery-2.1.0.min.js"><\/script>')
+
 script(src=CONFIG.CDN_HOST + '/js/bootstrap.js')
 script(src=CONFIG.CDN_HOST + '/js/plugins.js')
 script(src=CONFIG.CDN_HOST + '/js/web.js')
@@ -12,3 +17,32 @@ script(src=CONFIG.CDN_HOST + '/js/web.js')
 if NODE_ENV == 'production'
   script.
     var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-22117109-15']); _gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();
+
+if (typeof warning != 'undefined' && warning.length)
+  script.
+    bootbox.dialog({
+      message: '<div class="padder m-t-md text-xl">#{warning}</div>',
+      className: "warning-modal",
+      buttons: {
+        main: {
+          label: "OKAY",
+          className: "btn-dark"
+        }
+      }
+    });
+
+if (typeof success != 'undefined' && success.length)
+  script.
+    bootbox.dialog({
+      message: '<div class="padder m-t-md text-xl">#{success}</div>',
+      buttons: {
+        main: {
+          label: "OKAY",
+          className: "btn-success"
+        }
+      }
+    });
+
+if (typeof info != 'undefined' && info.length)
+  script.
+    Notifier.show('#{info}', 'err');

@@ -68,6 +68,4 @@ var Applicant = new Schema({
 
 Applicant.plugin(CreateUpdatedAt)
 
-var UserModel = mongoose.model('Applicant', Applicant)
-
-module.exports = UserModel
+module.exports = mongoose.model('Applicant', Applicant)

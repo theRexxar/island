@@ -1,5 +1,32 @@
-extends layouts/default
+doctype html
+html.app(lang='en')
 
 block main
-  h1 500 - Internal Server Error :(
-  pre= error
+
+  include includes/head
+
+  .not-found-404
+
+    .not-found-fill
+
+      include includes/logo
+
+      .container.error-message
+        .error-message-wrap
+          .pull-left.m-r-md
+            span 5
+            i.fa.fa-meh-o.m-r-sm
+            i.fa.fa-frown-o
+
+          .col-lg-7.no-padder
+            p.m-t-sm Internal Server Error..!!
+
+            span.error-message-text
+              | Find something&nbsp;
+              a(href='/') Go to Homepage
+              | .
+
+      .clearfix
+
+      .container.m-t-xl
+        pre= error

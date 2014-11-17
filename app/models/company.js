@@ -34,4 +34,4 @@ var Company = new mongoose.Schema({
 
 Company.plugin(CreateUpdatedAt)
 
-mongoose.model('Company', Company)
+module.exports = mongoose.model('Company', Company)

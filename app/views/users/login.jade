@@ -20,7 +20,7 @@ block main
             span Sign in with Google
               sup ®
 
-        form.col-lg-12.m-t-md.m-b-md.form-signin(action="/users/session", method="post", role="form")
+        form.col-lg-12.m-t-md.m-b-lg.form-signin(action="/users/session", method="post", role="form")
           if messages.errors
             .alert.alert-danger.animated.fadeIn
               button.close(type='button', data-dismiss='alert') ×
@@ -34,9 +34,9 @@ block main
             .list-group-item
               input.form-control.box-shadow-none.no-border(type='password', placeholder='Password', name="password")
 
-          button.pull-left.btn.btn-md.btn-primary.btn-block.btn-login(type='submit') Sign In
+          button.pull-left.btn.btn-lg.btn-s-lg.btn-primary.btn-block.btn-login(type='submit') Sign In
 
-          a.block.pull-right(href="forgot-password" class="forgot-password") Forgot Password
+          a.m-t-sm.block.pull-right(href="forgot-password" class="forgot-password") Forgot Password
 
           .clearfix
 
