@@ -6,17 +6,22 @@ var rootPath = path.normalize(__dirname + '/../..')
 var config = {
   ROOT     : rootPath,
   APP      : {
-    name : 'Torso'
+    name : 'ApFlying'
   },
-  BASE_HOST : 'http://torso.com',
-  BASE_API_HOST : 'http://api.torso.com',
-  CDN_HOST : 'http://cdn.torso.com',
+  BASE_HOST : 'http://apflying.com',
+  BASE_API_HOST : 'http://api.apflying.com',
+  CDN_HOST : 'http://cdn.apflying.com',
   SERVER: {
     port: 3001,
     hostname: process.env.HOSTNAME || '127.0.0.1',
   },
   Db: {
     url: 'mongodb://localhost/hireable_prod'
+  },
+  REDIS: {
+    host: '127.0.0.1',
+    port: 6379,
+    options: {}
   },
   SESSION_SECRET: process.env.SESSION_SECRET || 'Your Session Secret goes here',
   Mailgun: {

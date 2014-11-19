@@ -19,18 +19,16 @@ passport.deserializeUser(function(id, done) {
     .findOne({ _id: id })
     .lean()
     .exec(function (err, user) {
-      if(user) {
-        Company
-          .find({user: user._id})
-          .lean()
-          .exec(function(err, company){
-            if(company) {
-              done(err, _.extend(user,{company: company}))
-            }
-          })
-      } else {
-        done(err, user)
-      }
+      Company
+        .find({user: user._id})
+        .lean()
+        .exec(function(err, company){
+          if(company) {
+            done(err, _.extend(user,{company: company}))
+          } else {
+            done(err, user)
+          }
+        })
     })
 })
 

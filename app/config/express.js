@@ -11,7 +11,7 @@ var compression      = require('compression')
 var bodyParser       = require('body-parser')
 var cookieParser     = require('cookie-parser')
 var session          = require('express-session')
-var MongoStore       = require('connect-mongo')({ session: session })
+var RedisStore       = require('connect-redis')(session)
 var errorHandler     = require('errorhandler')
 var expressValidator = require('express-validator')
 var helmet           = require('helmet')
@@ -19,7 +19,6 @@ var lusca            = require('lusca')
 var env              = process.env.NODE_ENV || 'development'
 var flash            = require('express-flash')
 var _                = require('lodash')
-
 JSON.mask            = require('json-mask')
 
 module.exports = function (app, passport) {
@@ -66,6 +65,14 @@ module.exports = function (app, passport) {
 
   app.use(cookieParser('KPjcJ6DIy6972ZRPSrNXiNdB0WxgP4oJKAI3cagWlEAVk'))
 
+  var RedisStoreSession = new RedisStore({
+    host: CONFIG.REDIS.host,
+    port: CONFIG.REDIS.port,
+    ttl: 86400,
+    db: 2,
+    prefix: 'apflying-session:'
+  })
+
   app.use(session({
     name: 'gushcentral.sid',
     genid: function(req) {
@@ -73,11 +80,8 @@ module.exports = function (app, passport) {
     },
     resave: true,
     saveUninitialized: true,
-    secret: CONFIG.SESSION_SECRET,
-    store: new MongoStore({
-      url: CONFIG.Db.url,
-      auto_reconnect: true
-    })
+    secret: pkg.name,
+    store: RedisStoreSession
   }));
 
   // use passport session
@@ -90,32 +94,22 @@ module.exports = function (app, passport) {
   app.use(flash())
 
   app.use(require(CONFIG.ROOT + '/app/helper/views-helper')(pkg.name));
+
   app.use(function (req, res, next) {
     res.locals.pkg       = pkg
     res.locals.NODE_ENV  = env
     res.locals.CONFIG    = CONFIG
-    res.locals.moment    = require('moment')
     res.locals._         = _
     res.locals.utility   = require('utility');
     res.locals.validator = require('validator');
-
     if(_.isObject(req.user)) {
       res.locals.user_session = JSON.mask(req.user, '_id,email,firstname,lastname,photo_profile,country');
     }
     next()
   })
 
-  app.use(express.static(app.config.root + '/tmp'))
-  if ( app.get('env') == 'development' ) {
-    app.use(express.static(app.config.root + '/public'))
-  } else {
-    var cacheTime = 86400000*7;     // 7 days
-    app.use(express.static(app.config.root + '/public',{ maxAge: cacheTime }));
-
-  }
-
   /** ROUTES Apps */
-  app.use('/', require(CONFIG.ROOT + '/app/routes/web'))
+  require(CONFIG.ROOT + '/app/routes')(app)
 
   // assume "not found" in the error msgs
   // is a 404. this is somewhat silly, but
@@ -130,42 +124,12 @@ module.exports = function (app, passport) {
     }
     // log it
     // send emails if you want
-
-    if(req.url) {
-      var path = req.url.split('/')[1];
-      if (/api/i.test(path)) {
-
-        var error_results     = {}
-
-        error_results.message = err.stack;
-
-        error_results.status  = 500;
-
-        error_results.id      = require('node-uuid').v4()
-
-        return res.status(500).send(error_results)
-      }
-    }
-    // console.error(err.stack)
-
-    console.log(err)
-
     // error page
     res.status(500).render('500', { error: err })
   })
 
   // assume 404 since no middleware responded
   app.use(function(req, res, next){
-
-    if(req.route) {
-      if (req.route.path === '/api/v1/*') {
-        var error_results     = {}
-        error_results.id      = require('node-uuid').v4()
-        error_results.message = 'Sorry, that page does not exist'
-        error_results.code    = 34 // Corresponds with an HTTP 404 - the specified resource was not found.
-        return res.status(404).json(error_results)
-      }
-    }
 
     res.status(404).render('404', {
       url: req.originalUrl,

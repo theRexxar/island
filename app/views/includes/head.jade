@@ -10,24 +10,6 @@ head(prefix="og: http://ogp.me/ns# hireable: http://ogp.me/ns/apps/hireable#")
   meta(name="description", content=pkg.description)
   link(href=CONFIG.CDN_HOST + "/favicon.png", rel="shortcut icon", type="image/x-icon")
 
-  if NODE_ENV == 'production'
-    script.
-      ~function (document) {
-        var elem = document.createElement('link');
-        var head = document.getElementsByTagName('head')[0];
-        elem.rel = 'stylesheet';
-        elem.href = 'https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300';
-        elem.media = 'only x';
-        head.appendChild(elem);
-        setTimeout(function () {
-          elem.media = 'all';
-        });
-      }(document);
-      window.csrfToken="#{_csrf}";
-
-    noscript
-      link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300' rel='stylesheet' type='text/css')
-
   meta(property="og:title", content=pkg.name + ' - ' + title)
   meta(property="og:description", content=pkg.description)
   meta(property="og:url", content="")

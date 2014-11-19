@@ -18,6 +18,11 @@ var config = {
   Db: {
     url: 'mongodb://localhost/hireable_dev'
   },
+  REDIS: {
+    host: '127.0.0.1',
+    port: 6379,
+    options: {}
+  },
   SESSION_SECRET: process.env.SESSION_SECRET || 'Your Session Secret goes here',
   Mailgun: {
     user: process.env.MAILGUN_USER || 'postmaster@tukangslicing.net',

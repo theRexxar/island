@@ -17,7 +17,7 @@ require(__dirname + '/app/config/database')(config, mongoose)
 var models_path = __dirname + '/app/models'
 
 fs.readdirSync(models_path).forEach(function (file) {
-  if (~file.indexOf('.js')) {
+  if (~file.indexOf('.js') && file !== '.DS_Store') {
     require(models_path + '/' + file)
   }
 })
