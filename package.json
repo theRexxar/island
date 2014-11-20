@@ -5,8 +5,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "mocha"
+    "start": "nodemon server.js"
   },
   "author": "Hengkiardo <hengki.sihombing@gmail.com> (https://github.com/aredo)",
   "repository": {
@@ -54,5 +53,10 @@
     "utility": "^1.2.1",
     "validator": "^3.22.1",
     "view-helpers": "^0.1.5"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.0.1",
+    "supertest": "^0.15.0"
   }
 }
