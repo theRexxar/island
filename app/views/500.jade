@@ -24,9 +24,9 @@ block main
             span.error-message-text
               | Find something&nbsp;
               a(href='/') Go to Homepage
-              | .
 
       .clearfix
 
-      .container.m-t-xl
-        pre= error
+      if NODE_ENV == 'development'
+        .container.m-t-xl
+          pre= error

@@ -15,7 +15,7 @@ mixin headerHome
         ul.nav.navbar-nav.navbar-right
           if (req.isAuthenticated())
             li
-              a(href='/logout') Logout
+              a(href='/dashboards') My Dashboard
           else
             li
               a(href='/features') PRICING

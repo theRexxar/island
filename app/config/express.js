@@ -78,17 +78,19 @@ module.exports = function (app, passport) {
     genid: function(req) {
       return require('node-uuid').v4() // use UUIDs for session IDs
     },
-    resave: true,
+    resave: false,
     saveUninitialized: true,
     secret: pkg.name,
-    store: RedisStoreSession
+    store: RedisStoreSession,
+    cookie : {
+      httpOnly: true,
+      maxAge: 604800
+    }
   }));
 
   // use passport session
   app.use(passport.initialize())
-  app.use(passport.session({
-    maxAge: new Date(Date.now() + 3600000)
-  }))
+  app.use(passport.session())
 
   app.use(lusca.csrf());
   app.use(flash())
@@ -125,7 +127,11 @@ module.exports = function (app, passport) {
     // log it
     // send emails if you want
     // error page
-    res.status(500).render('500', { error: err })
+    res.status(500).render('500', {
+      error: err,
+      pkg: pkg,
+      CONFIG: CONFIG
+    })
   })
 
   // assume 404 since no middleware responded

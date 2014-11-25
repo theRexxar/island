@@ -1,8 +1,13 @@
 "use strict";
 
-exports.index = function (req, res) {
+exports.company = function (req, res) {
+  res.render('accounts/company', {
+    bodyClass : 'dashboards'
+  })
+}
 
-  res.render('accounts/index', {
+exports.profiles = function (req, res) {
+  res.render('accounts/profile', {
     bodyClass : 'dashboards'
   })
 }

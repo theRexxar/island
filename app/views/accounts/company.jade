@@ -1,0 +1,17 @@
+extends ../layouts/dashboard
+
+include ../includes/sidebar
+
+block main
+  .container-fluid.padder-v
+    .row
+      .col-sm-3.col-md-3.col-lg-2.panel.panel-default.m-b
+
+        mixin sidebarProfile('company')
+
+      .col-sm-9.col-md-9.col-lg-10
+        .panel.panel-default.m-b
+          header.panel-heading
+            h4.m-n.f-bold Company Profile
+          #companyProfileSetting.panel-body
+

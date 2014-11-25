@@ -11,6 +11,7 @@ var fs       = require('fs')
 var accountControllers  = require(CONFIG.ROOT + '/app/controllers/accounts')
 
 Route
-  .get('/company', Auth.requiresLogin, accountControllers.index)
+  .get('/company', Auth.requiresLogin, accountControllers.company)
+  .get('/profile', Auth.requiresLogin, accountControllers.profiles)
 
 module.exports = Route
