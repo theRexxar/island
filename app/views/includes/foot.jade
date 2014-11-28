@@ -20,8 +20,10 @@ if NODE_ENV == 'production'
 
 if (typeof warning != 'undefined' && warning.length)
   script.
+    var messages=_.first(!{JSON.stringify(warning)});
+
     bootbox.dialog({
-      message: '<div class="padder m-t-md text-xl">#{warning}</div>',
+      message: '<div class="padder m-t-md text-xl">'+ messages.msg  +'</div>',
       className: "warning-modal",
       buttons: {
         main: {
@@ -31,10 +33,12 @@ if (typeof warning != 'undefined' && warning.length)
       }
     });
 
-if (typeof success != 'undefined' && success.length)
+if (typeof info != 'undefined' && info.length)
   script.
+    var messages=_.first(!{JSON.stringify(info)});
+
     bootbox.dialog({
-      message: '<div class="padder m-t-md text-xl">#{success}</div>',
+      message: '<div class="padder m-t-md text-xl">'+ messages.msg  +'</div>',
       buttons: {
         main: {
           label: "OKAY",
@@ -43,6 +47,15 @@ if (typeof success != 'undefined' && success.length)
       }
     });
 
-if (typeof info != 'undefined' && info.length)
+if (typeof errors != 'undefined' && errors.length)
   script.
-    Notifier.show('#{info}', 'err');
+    var messages = _.first(!{JSON.stringify(info)});
+    bootbox.dialog({
+      message: '<div class="padder m-t-md text-xl">'+ messages.msg  +'</div>',
+      buttons: {
+        main: {
+          label: "OKAY",
+          className: "btn-success"
+        }
+      }
+    });

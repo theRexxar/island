@@ -8,11 +8,11 @@ var utility     = require('utility');
 var crypto      = require('crypto');
 var errorHelper = require(CONFIG.ROOT + '/app/helper/errors');
 var passport    = require('passport')
+var _           = require('lodash')
 
 var login = function (req, res) {
   var redirectTo = req.session.returnTo ? req.session.returnTo : '/'
   delete req.session.returnTo
-  req.flash('success', { msg: 'Success! You are logged in.' });
   res.redirect(redirectTo)
 }
 
@@ -29,10 +29,10 @@ exports.authCallback = login
  */
 exports.login = function (req, res) {
   if(req.isAuthenticated()){
-    res.redirect('/dashboard')
+    res.redirect('/dashboards')
   }else{
     res.render('users/login', {
-      title: 'Login',
+      titlePage: 'Sign in · '+ CONFIG.APP.name,
       message: req.flash('error')
     })
   }
@@ -51,15 +51,23 @@ exports.postLogin = function (req, res, next) {
 
   passport.authenticate('local', function(err, user, info) {
     if (err) return next(err);
+
     if (!user) {
       req.flash('errors', { msg: info.message });
       return res.redirect('/login');
     }
+
     req.logIn(user, function(err) {
       if (err) return next(err);
-      req.flash('success', { msg: 'Success! You are logged in.' });
-      res.redirect(req.session.returnTo || '/');
+      var redirectTo = req.session.returnTo ? req.session.returnTo : '/dashboards'
+      delete req.session.returnTo
+      if(_.size(req.user.company) > 0) {
+        res.redirect(redirectTo);
+      } else {
+        return res.redirect('/recruiter-registrations/welcome')
+      }
     });
+
   })(req, res, next);
 }
 
@@ -68,10 +76,10 @@ exports.postLogin = function (req, res, next) {
  */
 exports.signup = function (req, res) {
   if(req.isAuthenticated()){
-    res.redirect('/dashboard')
+    res.redirect('/dashboards')
   } else {
     res.render('users/signup', {
-      title: 'Sign up',
+      titlePage: 'Join Apfly · '+ CONFIG.APP.name,
       user: new User()
     })
   }
@@ -81,8 +89,7 @@ exports.signup = function (req, res) {
  */
 exports.logout = function (req, res) {
   req.logout();
-  req.flash('success', { msg: 'Success! You are logout' });
-  res.redirect('/')
+  res.redirect(301, '/')
 }
 
 /**
@@ -94,7 +101,6 @@ exports.session = login
 /**
  * Create user
  */
-
 exports.create = function (req, res, next) {
   var user = new User(req.body)
   user.provider = 'local'
@@ -106,14 +112,17 @@ exports.create = function (req, res, next) {
         title: 'Sign up'
       })
     } else {
-      console.log(user)
       // manually login the user once successfully signed up
       req.logIn(user, function(err) {
-        if (err) {
-          console.log(err)
-          return next(err)
+
+        if (err) { console.error(err); return next(err) }
+
+        if(_.size(req.user.company) > 0) {
+          return res.redirect('/dashboards')
+        } else {
+          return res.redirect('/recruiter-registrations/welcome')
         }
-        return res.redirect('/dashboard')
+
       })
     }
   })
@@ -122,17 +131,15 @@ exports.create = function (req, res, next) {
 exports.firstAddCompany = function (req, res, next) {
 
   res.render('users/first-setup-company', {
-    title: 'Sign up',
+    titlePage: 'Create Company · '+ CONFIG.APP.name,
   })
 }
 
 
 exports.linkedinCallback = function (req, res, next) {
-
   if (req.query.resource == 'user') {
-
     res.redirect(301, '/recruiter-registrations/welcome')
-
   } else {
+    next()
   }
 }

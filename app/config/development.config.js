@@ -6,7 +6,7 @@ var rootPath = path.normalize(__dirname + '/../..')
 var config = {
   ROOT     : rootPath,
   APP      : {
-    name : 'Hireable'
+    name : 'Apfly.com'
   },
   BASE_HOST : 'http://thehireable.dev:9876',
   BASE_API_HOST : 'http://api.hireable.dev:6789',

@@ -81,11 +81,10 @@ module.exports = function (app, passport) {
     resave: false,
     saveUninitialized: true,
     secret: pkg.name,
-    store: RedisStoreSession,
-    cookie : {
-      httpOnly: true,
-      maxAge: 604800
-    }
+    store: RedisStoreSession
+    // cookie : {
+    //   maxAge: 604800
+    // }
   }));
 
   // use passport session

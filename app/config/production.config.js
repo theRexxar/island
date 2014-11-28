@@ -6,7 +6,7 @@ var rootPath = path.normalize(__dirname + '/../..')
 var config = {
   ROOT     : rootPath,
   APP      : {
-    name : 'ApFlying'
+    name : 'Apfly'
   },
   BASE_HOST : 'http://apflying.com',
   BASE_API_HOST : 'http://api.apflying.com',

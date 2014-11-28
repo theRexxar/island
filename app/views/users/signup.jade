@@ -6,13 +6,13 @@ block main
   .container
     .panel.panel-default.col-lg-9.pull-none.m-auto.m-t-lg.r2x
       .row
-        .col-md-6.col-sm-6.flag-section.flag-section-top
+        .col-md-6.col-sm-6.flag-section.flag-section-top.b-r
 
           .panel-body.m-r-md
             h4.text-center.f-bold Create an account
             p.text-center Fill out the information below to start using Workable.
 
-            form.m-t-sm.m-b-lg.form-signup(action="/signup", method="post", role="form")
+            form.m-t-sm.m-b-lg.form-signup(action="/users/create", method="post", role="form")
 
               include ../includes/messages
 
@@ -32,7 +32,7 @@ block main
                   input(type='checkbox') | Agree the a(href='#') terms and policy
               button.btn.btn-lg.btn-s-lg.m-auto.btn-primary.btn-block(type='submit') Get Started Now
 
-        .col-md-6.col-sm-6.flag-section.flag-section-top.b-l
+        .col-md-6.col-sm-6.flag-section.flag-section-top
           .panel-body
 
             h4.text-center.f-bold Quick setup
