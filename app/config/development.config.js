@@ -6,7 +6,7 @@ var rootPath = path.normalize(__dirname + '/../..')
 var config = {
   ROOT     : rootPath,
   APP      : {
-    name : 'Apfly.com'
+    name : 'Apfly'
   },
   BASE_HOST : 'http://thehireable.dev:9876',
   BASE_API_HOST : 'http://api.hireable.dev:6789',
@@ -31,7 +31,7 @@ var config = {
   GOOGLE: {
     clientID: process.env.GOOGLE_ID || '933344845966-nd5r1dsa3b94kkrbibs30h77uat95gba.apps.googleusercontent.com',
     clientSecret: process.env.GOOGLE_SECRET || 'BJWomy9-LkF8GyT_VA0xbH6X',
-    callbackURL: '/auth/google/callback',
+    callbackURL: '/auth/google/callback?resource=user',
     passReqToCallback: true
   },
   LINKEDIN: {

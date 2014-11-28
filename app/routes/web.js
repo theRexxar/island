@@ -20,8 +20,19 @@ Route
   .get('/recruiter-registrations/welcome', Auth.hasCreateCompany, userControllers.firstAddCompany)
   .post('/users/create', Auth.hasLogin, userControllers.create)
   .post('/users/session', Auth.hasLogin, userControllers.postLogin)
+
   .get('/auth/linkedin', passport.authenticate('linkedin', { state: 'SOME STATE' }))
-  .get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/login' }), userControllers.linkedinCallback)
+  .get('/auth/linkedin/callback',
+    passport.authenticate('linkedin', {
+      failureRedirect: '/signup'
+    }), userControllers.oauthCallback)
+
+  .get('/auth/google', passport.authenticate('google', { scope: 'profile email' }))
+  .get('/auth/google/callback',
+    passport.authenticate('google', {
+      failureRedirect: '/signup'
+    }), userControllers.oauthCallback)
+
   .get('/', pageControllers.home)
 
 module.exports = Route

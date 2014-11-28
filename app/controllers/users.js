@@ -80,6 +80,7 @@ exports.signup = function (req, res) {
   } else {
     res.render('users/signup', {
       titlePage: 'Join Apfly · '+ CONFIG.APP.name,
+      flash_error: req.flash('flash_error'),
       user: new User()
     })
   }
@@ -136,10 +137,11 @@ exports.firstAddCompany = function (req, res, next) {
 }
 
 
-exports.linkedinCallback = function (req, res, next) {
+exports.oauthCallback = function (req, res, next) {
   if (req.query.resource == 'user') {
     res.redirect(301, '/recruiter-registrations/welcome')
   } else {
+    console.log(req.query)
     next()
   }
 }

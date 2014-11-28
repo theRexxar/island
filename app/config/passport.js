@@ -4,6 +4,7 @@ var CONFIG           = require('./index')
 var mongoose         = require('mongoose')
 var LocalStrategy    = require('passport-local').Strategy
 var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+var GoogleStrategy   = require('passport-google-oauth').OAuth2Strategy;
 var passport         = require('passport')
 var User             = require(CONFIG.ROOT + '/app/models/user')
 var Company          = require(CONFIG.ROOT + '/app/models/company')
@@ -58,12 +59,11 @@ passport.use(new LocalStrategy({
 
 
 // Sign in with LinkedIn.
-
 passport.use(new LinkedInStrategy(CONFIG.LINKEDIN, function(req, accessToken, refreshToken, profile, done) {
   if (req.user) {
     User.findOne({ 'linkedin.id': profile.id }, function(err, existingUser) {
       if (existingUser) {
-        req.flash('errors', { msg: 'There is already a LinkedIn account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
+        req.flash('flash_error', { msg: 'There is already a LinkedIn account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
         done(err);
       } else {
         User.findById(req.user.id, function(err, user) {
@@ -91,7 +91,7 @@ passport.use(new LinkedInStrategy(CONFIG.LINKEDIN, function(req, accessToken, re
 
         if (existingEmailUser) {
 
-          req.flash('errors', { msg: 'There is already an account using this email address. Sign in to that account and link it with LinkedIn manually from Account Settings.' });
+          req.flash('flash_error', { msg: 'There is already an account using this email address. Sign in to that account and link it with LinkedIn manually from Account Settings.' });
           done(err);
 
         } else {
@@ -119,3 +119,85 @@ passport.use(new LinkedInStrategy(CONFIG.LINKEDIN, function(req, accessToken, re
     });
   }
 }));
+// End Sign in with LinkedIn.
+
+// Sign in with Google.
+passport.use(new GoogleStrategy(CONFIG.GOOGLE, function(req, accessToken, refreshToken, profile, done) {
+
+  if (req.user) {
+    User.findOne({ 'google.id' : profile.id }, function(err, existingUser) {
+      if (existingUser) {
+
+        req.flash('warning','There is already a Google account that belongs to you. Sign in with that account or delete it, then link it with your current account.');
+
+        done(err);
+
+      } else {
+
+        User.findById(req.user.id, function(err, user) {
+
+          user.google = profile._json;
+
+          user.tokens.push({ kind: 'google', accessToken: accessToken });
+
+          user.save(function(err, user) {
+
+            var name = user.firstname || user.username || user.lastname
+
+            req.flash('success', name + ', your account have sucessfully connected to Google');
+
+            done(err, user);
+          });
+
+        });
+      }
+    });
+
+  } else {
+
+      User.findOne({ 'google.id': profile.id }, function(err, existingUser) {
+
+        if (existingUser) {
+
+          return done(null, existingUser);
+
+        } else {
+
+         User.findOne({ email: profile._json.email }, function(err, existingEmailUser) {
+
+          if (existingEmailUser) {
+
+            console.log(existingEmailUser)
+
+            req.flash('flash_error', { msg: 'There is already an account using this email address. Sign in to that account and link it with Google manually from Account Settings.' });
+
+            done(err);
+
+          } else {
+
+            var user = new User();
+
+
+            user.tokens.push({ kind: 'google', accessToken: accessToken })
+
+            user.google        = profile._json
+            user.provider      = 'google'
+            user.email         = profile._json.email
+            user.firstname     = profile.name.givenName
+            user.lastname      = profile.name.familyName
+            user.photo_profile = profile._json.picture;
+
+            user.save(function(err, newUser) {
+
+              console.log(err)
+
+              done(err, newUser)
+            });
+
+          }
+        });
+      }
+    });
+  }
+}));
+// End Sign in with Google.

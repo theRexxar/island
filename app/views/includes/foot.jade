@@ -23,12 +23,12 @@ if (typeof warning != 'undefined' && warning.length)
     var messages=_.first(!{JSON.stringify(warning)});
 
     bootbox.dialog({
-      message: '<div class="padder m-t-md text-xl">'+ messages.msg  +'</div>',
-      className: "warning-modal",
+      message: '<div class="padder text-xl">'+ messages.msg  +'</div>',
+      className: "warning-dialog",
       buttons: {
         main: {
           label: "OKAY",
-          className: "btn-dark"
+          className: "btn-primary"
         }
       }
     });
@@ -38,24 +38,22 @@ if (typeof info != 'undefined' && info.length)
     var messages=_.first(!{JSON.stringify(info)});
 
     bootbox.dialog({
-      message: '<div class="padder m-t-md text-xl">'+ messages.msg  +'</div>',
+      message: '<div class="padder text-xl">'+ messages.msg  +'</div>',
+      className: 'error-dialog',
       buttons: {
         main: {
           label: "OKAY",
-          className: "btn-success"
+          className: "btn-primary"
         }
       }
     });
 
-if (typeof errors != 'undefined' && errors.length)
+if (typeof flash_error != 'undefined' && flash_error.length)
   script.
-    var messages = _.first(!{JSON.stringify(info)});
+    var messages = _.first(!{JSON.stringify(flash_error)});
+
     bootbox.dialog({
-      message: '<div class="padder m-t-md text-xl">'+ messages.msg  +'</div>',
-      buttons: {
-        main: {
-          label: "OKAY",
-          className: "btn-success"
-        }
-      }
+      message: '<div class="padder text-xl">'+ messages.msg  +'</div>',
+      className: 'error-dialog',
+      closeButton: false,
     });
