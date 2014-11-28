@@ -19,7 +19,16 @@ var lusca            = require('lusca')
 var env              = process.env.NODE_ENV || 'development'
 var flash            = require('express-flash')
 var _                = require('lodash')
+var async            = require('async')
 JSON.mask            = require('json-mask')
+
+var parallelMiddleware = function parallel(middlewares) {
+  return function (req, res, next) {
+    async.each(middlewares, function (mw, cb) {
+      mw(req, res, cb);
+    }, next);
+  };
+}
 
 module.exports = function (app, passport) {
 
@@ -49,19 +58,26 @@ module.exports = function (app, passport) {
     app.use(morgan('dev'))
   }
 
-  app.use(helmet.crossdomain({ caseSensitive: true }));
-  app.use(helmet.xssFilter());
-  app.use(helmet.xframe('sameorigin'));
-  app.use(helmet.nosniff());
-  app.use(helmet.nocache({ noEtag: true }));
-  app.disable('x-powered-by');
-  // app.enable('trust proxy')
+  // app.use(helmet.crossdomain({ caseSensitive: true }));
+  // app.use(helmet.xssFilter());
+  // app.use(helmet.xframe('sameorigin'));
+  // app.use(helmet.nosniff());
+  // app.use(helmet.nocache({ noEtag: true }));
 
-  app.use(multer())
-  app.use(bodyParser.urlencoded({extended: true}))
-  app.use(bodyParser.json())
-  app.use(expressValidator())
-  app.use(methodOverride())
+  app.disable('x-powered-by')
+  app.enable('trust proxy')
+
+  app.use(parallelMiddleware([
+    helmet.crossdomain({ caseSensitive: true }),
+    helmet.xssFilter(),
+    helmet.xframe('sameorigin'),
+    helmet.nosniff(),
+    helmet.nocache({ noEtag: true }),
+    multer(),
+    bodyParser.urlencoded({extended: true}),
+    bodyParser.json(),
+    methodOverride()
+  ]));
 
   app.use(cookieParser('KPjcJ6DIy6972ZRPSrNXiNdB0WxgP4oJKAI3cagWlEAVk'))
 
