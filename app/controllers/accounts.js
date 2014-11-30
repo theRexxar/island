@@ -11,3 +11,15 @@ exports.profiles = function (req, res) {
     bodyClass : 'dashboards'
   })
 }
+
+exports.subscriptionPlan = function (req, res) {
+  res.render('accounts/subscription-plan', {
+    bodyClass : 'dashboards'
+  })
+}
+
+exports.integration = function (req, res) {
+  res.render('accounts/integration', {
+    bodyClass : 'dashboards'
+  })
+}

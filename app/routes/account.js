@@ -13,5 +13,7 @@ var accountControllers  = require(CONFIG.ROOT + '/app/controllers/accounts')
 Route
   .get('/company', Auth.requiresLogin, accountControllers.company)
   .get('/profile', Auth.requiresLogin, accountControllers.profiles)
+  .get('/integration', Auth.requiresLogin, accountControllers.integration)
+  .get('/subscription-plan', Auth.requiresLogin, accountControllers.subscriptionPlan)
 
 module.exports = Route

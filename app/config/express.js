@@ -107,23 +107,27 @@ module.exports = function (app, passport) {
   app.use(passport.initialize())
   app.use(passport.session())
 
-  app.use(lusca.csrf());
-  app.use(flash())
-
-  app.use(require(CONFIG.ROOT + '/app/helper/views-helper')(pkg.name));
-
-  app.use(function (req, res, next) {
-    res.locals.pkg       = pkg
-    res.locals.NODE_ENV  = env
-    res.locals.CONFIG    = CONFIG
-    res.locals._         = _
-    res.locals.utility   = require('utility');
-    res.locals.validator = require('validator');
-    if(_.isObject(req.user)) {
-      res.locals.user_session = JSON.mask(req.user, '_id,email,firstname,lastname,photo_profile,country');
+  var localsVariable = function() {
+    return function (req, res, next) {
+      res.locals.pkg       = pkg
+      res.locals.NODE_ENV  = env
+      res.locals.CONFIG    = CONFIG
+      res.locals._         = _
+      res.locals.utility   = require('utility');
+      res.locals.validator = require('validator');
+      if(_.isObject(req.user)) {
+        res.locals.user_session = JSON.mask(req.user, '_id,email,firstname,lastname,photo_profile,country');
+      }
+      next()
     }
-    next()
-  })
+  }
+
+  app.use(parallelMiddleware([
+    lusca.csrf(),
+    flash(),
+    require(CONFIG.ROOT + '/app/helper/views-helper')(pkg.name),
+    localsVariable()
+  ]));
 
   /** ROUTES Apps */
   require(CONFIG.ROOT + '/app/routes')(app)

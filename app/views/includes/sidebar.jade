@@ -1,30 +1,30 @@
 mixin sidebarProfile(current)
   aside.row.bg-gray-lighter
-    ul.nav.nav-sidebar.m-t-md.m-b-md
+    ul.nav.nav-sidebar.m-t-md.m-b-md(data-current-menu="#{current}")
       li(class= (current === "company" ? "active" : ''))
         a(href='/account/company')
           i.fa.fa-building-o
           | &nbsp; &nbsp;Company Profile
-      li(class= (current === "member" ? "active" : ''))
-        a(href='/account/member')
-          i.fa.fa-user
-          | &nbsp; &nbsp;Account Member
-      li(class= (current === "plan" ? "active" : ''))
-        a(href='/account/subscription-plan')
-          i.fa.fa-cc-visa
-          | &nbsp; Subscription Plan
-      li(class= (current === "billing" ? "active" : ''))
-        a(href='/account/subscription-billing')
-          i.fa.fa-dollar
-          | &nbsp; &nbsp;Billing Information
       li(class= (current === "profile" ? "active" : ''))
         a(href='/account/profile')
           i.fa.fa-male
           | &nbsp; &nbsp;Personal Profile
-      li
-        a.text-muted(href='#')
-          i.fa.fa-bullhorn
+      li(class= (current === "integration" ? "active" : ''))
+        a(href='/account/integration')
+          i.fa.fa-code
           | &nbsp; Integrations
+      li(class= (current === "plan" ? "active" : ''))
+        a(href='/account/subscription-plan')
+          i.fa.fa-money
+          | &nbsp; Subscription Plan
+      li(class= (current === "billing" ? "active" : ''))
+        a.text-muted(href='#')
+          i.fa.fa-dollar
+          | &nbsp; &nbsp;Billing Information
+      li(class= (current === "member" ? "active" : ''))
+        a.text-muted(href='#')
+          i.fa.fa-user
+          | &nbsp; &nbsp;Account Member
       li
         a.text-muted(href='#')
           i.fa.fa-users
