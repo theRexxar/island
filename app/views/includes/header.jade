@@ -38,22 +38,37 @@ mixin headerDashboard
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        a.brandLogo.navbar-brand(href='/')
+        a.brandLogo.navbar-brand(href='/dashboards')
           img.m-r-xs(src=CONFIG.CDN_HOST + "/img/app.svg" width="42" height="42")
-          span.text-xl.font-bold #{pkg.product_name}
+          span.text-xl.font-bold #{CONFIG.APP.name}
 
       nav.collapse.navbar-collapse(role='navigation')
-        ul.nav.navbar-nav.b-l.b-r
-          li.active
-            a(href="/dashboards") Dashboard
-          li
-            a(href="/candidates") Candidates
-          li
-            a(href="/agendas") Agendas
-          li
-            a(href="/reports") Repots
-          li
-            a(href="/reports") Activity
+        ul.nav.navbar-nav
+
+          li(class="#{isActive('jobs')}")
+            a(href="/jobs/create")
+              i.fa.fa-suitcase &nbsp;
+              | Jobs
+
+          li(class="#{isActive('candidates')}")
+            a(href="/candidates")
+              i.fa.fa-graduation-cap &nbsp;
+              | Candidates
+
+          li(class="#{isActive('agendas')}")
+            a(href="/agendas")
+              i.fa.fa-calendar-o &nbsp;
+              | Agendas
+
+          li(class="#{isActive('reports')}")
+            a(href="/reports")
+              i.fa.fa-bar-chart &nbsp;
+              | Repots
+
+          li(class="#{isActive('activity')}")
+            a(href="/activity")
+              i.fa.fa-line-chart &nbsp;
+              | Activity
 
         ul.nav.navbar-nav.navbar-right
           li.dropdown.b-l.b-r
@@ -62,21 +77,21 @@ mixin headerDashboard
                 img(src="https://gravatar.com/avatar/#{utility.md5(req.user.email)}?s=80")
                 span.caret.m-l-xs
 
-              ul.dropdown-menu.animated.fadeInRight
-                span.arrow.top
-                li
-                  a(href="/account/company")
-                    i.fa.fa-building-o
-                    | &nbsp; Company Settings
-                li
-                  a(href="/account/setting" data-id="534ba99f3ef6615633796894")
-                    i.fa.fa-cogs
-                    | &nbsp; Account Settings
-                li.divider
-                li
-                  a(href="/logout" class="btn-logout")
-                    i.fa.fa-power-off.text-danger
-                    | &nbsp; Logout
+            ul.dropdown-menu.animated.fadeInRight
+              span.arrow.top-right
+              li
+                a(href="/account/company")
+                  i.fa.fa-building-o
+                  | &nbsp; Company Settings
+              li
+                a(href="/account/profile" data-id="#{req.user._id}")
+                  i.fa.fa-cogs
+                  | &nbsp; Account Settings
+              li.divider
+              li
+                a(href="/logout" class="btn-logout")
+                  i.fa.fa-power-off.text-danger
+                  | &nbsp; Logout
           li
             a.bg-gray.text-warning(href="#")
               span.fa.fa-lg.fa-question-circle

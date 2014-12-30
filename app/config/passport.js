@@ -21,7 +21,7 @@ passport.deserializeUser(function(id, done) {
     .lean()
     .exec(function (err, user) {
       Company
-        .find({user: id})
+        .findOne({user: id})
         .lean()
         .exec(function(err, company){
           if(company) {

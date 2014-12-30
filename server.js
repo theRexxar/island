@@ -1,18 +1,20 @@
 "use strict";
 
 // Module dependencies
+global.CONFIG   = require(__dirname + '/app/config')
+global.express  = require('express')
+
 var path     = require('path')
 var fs       = require('fs')
-var express  = require('express')
 var mongoose = require('mongoose')
 var passport = require('passport')
-var config   = require(__dirname + '/app/config')
+
 var app      = express()
 
-app.config = config
+app.config = CONFIG
 
 // Database
-require(__dirname + '/app/config/database')(config, mongoose)
+require(__dirname + '/app/config/database')(CONFIG, mongoose)
 
 var models_path = __dirname + '/app/models'
 

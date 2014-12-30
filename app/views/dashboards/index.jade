@@ -3,13 +3,21 @@ extends ../layouts/dashboard
 block main
   .container-fluid.padder-v
     .row
-      .col-sm-10.col-md-9.col-lg-10
+      .col-sm-12.col-md-9.col-lg-10
 
         .published-position-block.m-b-xl
           div.block-title.m-t-sm
             h3.m-t-none
               i.fa.fa-cloud &nbsp;
               | Published Posisiton
+
+          //- .panel.panel-default.m-b.b-dotted.b-2x.no-bg
+          //-   .wrapper-lg.text-center
+          //-     p.h4.text-gray.f-normal Published positions appear on your careers page and collect applications from candidates
+          //-     p.h4.text-center
+          //-       a(href="/jobs/create")
+          //-        | Create a new position&nbsp;
+          //-        i.fa.fa-chevron-right
 
           .panel.panel-default.m-b
             .m-t-sm.m-b-sm
@@ -105,6 +113,14 @@ block main
               i.fa.fa-edit &nbsp;
               | Drafts
 
+          .panel.panel-default.m-b.b-dotted.b-2x.no-bg
+            .wrapper-lg.text-center
+              p.h4.text-gray.f-normal
+                | Drafts are job positions you have not yet published.
+                a(href="/jobs/create")
+                 | Create a new position&nbsp;
+                 i.fa.fa-chevron-right
+
           .panel.panel-default.m-b
             .m-t-sm.m-b-sm
               .col-md-10
@@ -182,7 +198,7 @@ block main
                   time.last-update.no-wrap updated 3 minutes ago
                 .clearfix
 
-      .col-sm-2.col-md-3.col-lg-2
+      .col-sm-12.col-md-3.col-lg-2
         p
           a.btn.btn-primary.block(href="jobs/create")
             i.fa.fa-plus

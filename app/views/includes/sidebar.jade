@@ -1,31 +1,88 @@
 mixin sidebarProfile(current)
   aside.row.bg-gray-lighter
-    ul.nav.nav-sidebar.m-t-md.m-b-md(data-current-menu="#{current}")
+    ul.nav.nav-sidebar.m-t-sm.m-b-sm(data-current-menu="#{current}")
       li(class= (current === "company" ? "active" : ''))
-        a(href='/account/company')
+        a.h5(href='/account/company')
           i.fa.fa-building-o
           | &nbsp; &nbsp;Company Profile
       li(class= (current === "profile" ? "active" : ''))
-        a(href='/account/profile')
+        a.h5(href='/account/profile')
           i.fa.fa-male
           | &nbsp; &nbsp;Personal Profile
       li(class= (current === "integration" ? "active" : ''))
-        a(href='/account/integration')
+        a.h5(href='/account/integration')
           i.fa.fa-code
           | &nbsp; Integrations
       li(class= (current === "plan" ? "active" : ''))
-        a(href='/account/subscription-plan')
+        a.h5(href='/account/subscription-plan')
           i.fa.fa-money
           | &nbsp; Subscription Plan
       li(class= (current === "billing" ? "active" : ''))
-        a.text-muted(href='#')
+        a.h5.text-muted(href='#')
           i.fa.fa-dollar
           | &nbsp; &nbsp;Billing Information
       li(class= (current === "member" ? "active" : ''))
-        a.text-muted(href='#')
+        a.h5.text-muted(href='#')
           i.fa.fa-user
           | &nbsp; &nbsp;Account Member
       li
-        a.text-muted(href='#')
+        a.h5.text-muted(href='#')
           i.fa.fa-users
           | &nbsp; Recruiting Preferences
+
+mixin sidebarCreateJob(current)
+  aside.row.bg-gray-lighter
+    ul.nav.nav-sidebar.jobs.m-t-sm.m-b-sm
+      li.active
+        a.h4(href="#")
+          i.fa.fa-briefcase
+          | &nbsp; &nbsp;The Jobs
+        span.info.text-sm
+          | Tell applicants what the job involves and why it's great to work
+          if req.user.company
+            | at #{req.user.company.name}
+          else
+            | with you
+
+      li
+        a.h4.text-muted(href='#')
+          i.fa.fa-list-ul
+          | &nbsp; &nbsp;Applicantion Form
+        span.info.text-sm.text-muted
+          | Design the applicantion from for this job position.
+
+      li(class= (current === "recruiters" ? "active" : ''))
+        a.h4.text-muted(href='#')
+          i.fa.fa-users
+          | &nbsp; &nbsp;Recruiters
+        span.info.text-sm.text-muted
+          | Invite your external recruiters to send you candidates for this position.
+
+
+mixin sidebarJob(current, jobId)
+  aside.row.bg-gray-lighter
+    ul.nav.nav-sidebar.jobs.m-t-sm.m-b-sm
+      li(class= (current === "jobs" ? "active" : ''))
+        a.h4(href= (current === "jobs" ? "#" : "/jobs/#{jobId}"))
+          i.fa.fa-briefcase
+          | &nbsp; &nbsp;The Jobs
+        span.info.text-sm
+          | Tell applicants what the job involves and why it's great to work
+          if req.user.company
+            | at #{req.user.company.name}
+          else
+            | with you
+
+      li(class= (current === "application-form" ? "active" : ''))
+        a.h4(href= (current === "application-form" ? "#" : '/jobs/#{jobId}/application-form/'))
+          i.fa.fa-list-ul
+          | &nbsp; &nbsp;Applicantion Form
+        span.info.text-sm
+          | Design the applicantion from for this job position.
+
+      li(class= (current === "recruiters" ? "active" : ''))
+        a.h4(href= (current === "recruiters" ? "#" : '/jobs/#{jobId}/recruiters'))
+          i.fa.fa-users
+          | &nbsp; &nbsp;Recruiters
+        span.info.text-sm
+          | Invite your external recruiters to send you candidates for this position.

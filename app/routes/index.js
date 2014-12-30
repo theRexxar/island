@@ -1,8 +1,8 @@
 "use strict";
 
-var CONFIG = require('../config')
-
 module.exports = function (app) {
+
+  app.use('/jobs/', require(CONFIG.ROOT + '/app/routes/jobs'))
 
   app.use('/account/', require(CONFIG.ROOT + '/app/routes/account'))
 

@@ -1,7 +1,5 @@
 "use strict";
 
-var CONFIG   = require('../config')
-var express  = require('express')
 var Route    = express.Router()
 var passport = require('passport')
 var lodash   = require('lodash')

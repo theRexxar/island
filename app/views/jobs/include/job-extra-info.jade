@@ -1,0 +1,440 @@
+.extra-info
+  .form-group.form-horizontal.col-md-6.col-lg-5.m-t-md
+    label.control-label.col-md-4.com-lg-4
+      | Employment type
+    .col-sm-8
+      select#job_employment_type.form-control.input-sm.long-length(name='employment_type')
+        option(value='') Select type
+        option(value='Full-time') Full-time
+        option(value='Part-time') Part-time
+        option(value='Contract') Contract
+        option(value='Temporary') Temporary
+        option(value='Other') Other
+
+  .clearfix
+  .form-group.form-horizontal.col-md-6.col-lg-5
+    label.control-label.col-md-4.com-lg-4
+      | Industry
+    .col-sm-8
+      select#job_industry.form-control.input-sm.long-length(name='industry')
+        option(value='') Select industry
+        option(value='Accounting') Accounting
+        option(value='Airlines/Aviation') Airlines/Aviation
+        option(value='Alternative Dispute Resolution') Alternative Dispute Resolution
+        option(value='Alternative Medicine') Alternative Medicine
+        option(value='Animation') Animation
+        option(value='Apparel & Fashion') Apparel &amp; Fashion
+        option(value='Architecture & Planning') Architecture &amp; Planning
+        option(value='Arts and Crafts') Arts and Crafts
+        option(value='Automotive') Automotive
+        option(value='Aviation & Aerospace') Aviation &amp; Aerospace
+        option(value='Banking') Banking
+        option(value='Biotechnology') Biotechnology
+        option(value='Broadcast Media') Broadcast Media
+        option(value='Building Materials') Building Materials
+        option(value='Business Supplies and Equipment') Business Supplies and Equipment
+        option(value='Capital Markets') Capital Markets
+        option(value='Chemicals') Chemicals
+        option(value='Civic & Social Organization') Civic &amp; Social Organization
+        option(value='Civil Engineering') Civil Engineering
+        option(value='Commercial Real Estate') Commercial Real Estate
+        option(value='Computer & Network Security') Computer &amp; Network Security
+        option(value='Computer Games') Computer Games
+        option(value='Computer Hardware') Computer Hardware
+        option(value='Computer Networking') Computer Networking
+        option(value='Computer Software') Computer Software
+        option(value='Construction') Construction
+        option(value='Consumer Electronics') Consumer Electronics
+        option(value='Consumer Goods') Consumer Goods
+        option(value='Consumer Services') Consumer Services
+        option(value='Cosmetics') Cosmetics
+        option(value='Dairy') Dairy
+        option(value='Defense & Space') Defense &amp; Space
+        option(value='Design') Design
+        option(value='Education Management') Education Management
+        option(value='E-Learning') E-Learning
+        option(value='Electrical/Electronic Manufacturing') Electrical/Electronic Manufacturing
+        option(value='Entertainment') Entertainment
+        option(value='Environmental Services') Environmental Services
+        option(value='Events Services') Events Services
+        option(value='Executive Office') Executive Office
+        option(value='Facilities Services') Facilities Services
+        option(value='Farming') Farming
+        option(value='Financial Services') Financial Services
+        option(value='Fine Art') Fine Art
+        option(value='Fishery') Fishery
+        option(value='Food & Beverages') Food &amp; Beverages
+        option(value='Food Production') Food Production
+        option(value='Fund-Raising') Fund-Raising
+        option(value='Furniture') Furniture
+        option(value='Gambling & Casinos') Gambling &amp; Casinos
+        option(value='Glass, Ceramics & Concrete') Glass, Ceramics &amp; Concrete
+        option(value='Government Administration') Government Administration
+        option(value='Government Relations') Government Relations
+        option(value='Graphic Design') Graphic Design
+        option(value='Health, Wellness and Fitness') Health, Wellness and Fitness
+        option(value='Higher Education') Higher Education
+        option(value='Hospital & Health Care') Hospital &amp; Health Care
+        option(value='Hospitality') Hospitality
+        option(value='Human Resources') Human Resources
+        option(value='Import and Export') Import and Export
+        option(value='Individual & Family Services') Individual &amp; Family Services
+        option(value='Industrial Automation') Industrial Automation
+        option(value='Information Services') Information Services
+        option(value='Information Technology and Services') Information Technology and Services
+        option(value='Insurance') Insurance
+        option(value='International Affairs') International Affairs
+        option(value='International Trade and Development') International Trade and Development
+        option(value='Internet') Internet
+        option(value='Investment Banking') Investment Banking
+        option(value='Investment Management') Investment Management
+        option(value='Judiciary') Judiciary
+        option(value='Law Enforcement') Law Enforcement
+        option(value='Law Practice') Law Practice
+        option(value='Legal Services') Legal Services
+        option(value='Legislative Office') Legislative Office
+        option(value='Leisure, Travel & Tourism') Leisure, Travel &amp; Tourism
+        option(value='Libraries') Libraries
+        option(value='Logistics and Supply Chain') Logistics and Supply Chain
+        option(value='Luxury Goods & Jewelry') Luxury Goods &amp; Jewelry
+        option(value='Machinery') Machinery
+        option(value='Management Consulting') Management Consulting
+        option(value='Maritime') Maritime
+        option(value='Marketing and Advertising') Marketing and Advertising
+        option(value='Market Research') Market Research
+        option(value='Mechanical or Industrial Engineering') Mechanical or Industrial Engineering
+        option(value='Media Production') Media Production
+        option(value='Medical Devices') Medical Devices
+        option(value='Medical Practice') Medical Practice
+        option(value='Mental Health Care') Mental Health Care
+        option(value='Military') Military
+        option(value='Mining & Metals') Mining &amp; Metals
+        option(value='Motion Pictures and Film') Motion Pictures and Film
+        option(value='Museums and Institutions') Museums and Institutions
+        option(value='Music') Music
+        option(value='Nanotechnology') Nanotechnology
+        option(value='Newspapers') Newspapers
+        option(value='Nonprofit Organization Management') Nonprofit Organization Management
+        option(value='Oil & Energy') Oil &amp; Energy
+        option(value='Online Media') Online Media
+        option(value='Outsourcing/Offshoring') Outsourcing/Offshoring
+        option(value='Package/Freight Delivery') Package/Freight Delivery
+        option(value='Packaging and Containers') Packaging and Containers
+        option(value='Paper & Forest Products') Paper &amp; Forest Products
+        option(value='Performing Arts') Performing Arts
+        option(value='Pharmaceuticals') Pharmaceuticals
+        option(value='Philanthropy') Philanthropy
+        option(value='Photography') Photography
+        option(value='Plastics') Plastics
+        option(value='Political Organization') Political Organization
+        option(value='Primary/Secondary Education') Primary/Secondary Education
+        option(value='Printing') Printing
+        option(value='Professional Training & Coaching') Professional Training &amp; Coaching
+        option(value='Program Development') Program Development
+        option(value='Public Policy') Public Policy
+        option(value='Public Relations and Communications') Public Relations and Communications
+        option(value='Public Safety') Public Safety
+        option(value='Publishing') Publishing
+        option(value='Railroad Manufacture') Railroad Manufacture
+        option(value='Ranching') Ranching
+        option(value='Real Estate') Real Estate
+        option(value='Recreational Facilities and Services') Recreational Facilities and Services
+        option(value='Religious Institutions') Religious Institutions
+        option(value='Renewables & Environment') Renewables &amp; Environment
+        option(value='Research') Research
+        option(value='Restaurants') Restaurants
+        option(value='Retail') Retail
+        option(value='Security and Investigations') Security and Investigations
+        option(value='Semiconductors') Semiconductors
+        option(value='Shipbuilding') Shipbuilding
+        option(value='Sporting Goods') Sporting Goods
+        option(value='Sports') Sports
+        option(value='Staffing and Recruiting') Staffing and Recruiting
+        option(value='Supermarkets') Supermarkets
+        option(value='Telecommunications') Telecommunications
+        option(value='Textiles') Textiles
+        option(value='Think Tanks') Think Tanks
+        option(value='Tobacco') Tobacco
+        option(value='Translation and Localization') Translation and Localization
+        option(value='Transportation/Trucking/Railroad') Transportation/Trucking/Railroad
+        option(value='Utilities') Utilities
+        option(value='Venture Capital & Private Equity') Venture Capital &amp; Private Equity
+        option(value='Veterinary') Veterinary
+        option(value='Warehousing') Warehousing
+        option(value='Wholesale') Wholesale
+        option(value='Wine and Spirits') Wine and Spirits
+        option(value='Wireless') Wireless
+        option(value='Writing and Editing') Writing and Editing
+
+  .form-group.form-horizontal.col-md-6.col-lg-5
+    label.control-label.col-md-4.com-lg-4
+      | Function
+    .col-sm-8
+      select#job_function.form-control.input-sm.long-length(name='function')
+        option(value='') Select function
+        option(value='Accounting/Auditing') Accounting/Auditing
+        option(value='Administrative') Administrative
+        option(value='Advertising') Advertising
+        option(value='Business Analyst') Business Analyst
+        option(value='Financial Analyst') Financial Analyst
+        option(value='Data Analyst') Data Analyst
+        option(value='Art/Creative') Art/Creative
+        option(value='Business Development') Business Development
+        option(value='Consulting') Consulting
+        option(value='Customer Service') Customer Service
+        option(value='Distribution') Distribution
+        option(value='Design') Design
+        option(value='Education') Education
+        option(value='Engineering') Engineering
+        option(value='Finance') Finance
+        option(value='General Business') General Business
+        option(value='Health Care Provider') Health Care Provider
+        option(value='Human Resources') Human Resources
+        option(value='Information Technology') Information Technology
+        option(value='Legal') Legal
+        option(value='Management') Management
+        option(value='Manufacturing') Manufacturing
+        option(value='Marketing') Marketing
+        option(value='Other') Other
+        option(value='Public Relations') Public Relations
+        option(value='Purchasing') Purchasing
+        option(value='Product Management') Product Management
+        option(value='Project Management') Project Management
+        option(value='Production') Production
+        option(value='Quality Assurance') Quality Assurance
+        option(value='Research') Research
+        option(value='Sales') Sales
+        option(value='Science') Science
+        option(value='Strategy/Planning') Strategy/Planning
+        option(value='Supply Chain') Supply Chain
+        option(value='Training') Training
+        option(value='Writing/Editing') Writing/Editing
+
+  .clearfix
+  .form-group.form-horizontal.col-md-6.col-lg-5
+    label.control-label.col-md-4.com-lg-4
+      | Experience
+    .col-sm-8
+      select#job_experience.form-control.input-sm.long-length(name='experience')
+        option(value='') Select level
+        option(value='Not Applicable') Not Applicable
+        option(value='Internship') Internship
+        option(value='Entry level') Entry level
+        option(value='Associate') Associate
+        option(value='Mid-Senior level') Mid-Senior level
+        option(value='Director') Director
+        option(value='Executive') Executive
+
+  .form-group.form-horizontal.col-md-6.col-lg-5
+    label.control-label.col-md-4.com-lg-4
+      | Education
+    .col-sm-8
+      select#job_education.form-control.input-sm.long-length(name='education')
+        option(value='') Select level
+        option(value='Unspecified') Unspecified
+        option(value='High School or equivalent') High School or equivalent
+        option(value='Certification') Certification
+        option(value='Vocational') Vocational
+        option(value='Associate Degree') Associate Degree
+        option(value="Bachelor's Degree") Bachelor&apos;s Degree
+        option(value="Master's Degree") Master&apos;s Degree
+        option(value='Doctorate') Doctorate
+        option(value='Professional') Professional
+        option(value='Some College Coursework Completed') Some College Coursework Completed
+        option(value='Vocational - HS Diploma') Vocational - HS Diploma
+        option(value='Vocational - Degree') Vocational - Degree
+        option(value='Some High School Coursework') Some High School Coursework
+
+  .form-group.form-horizontal.col-md-6.col-lg-5
+    label.control-label.col-md-4.com-lg-4
+      | Salary
+    .col-sm-8
+      input#job_salary_from.numeric.integer.form-control.input-sm(name='salary_from', step='1000', type='number')
+      span.text-black.block To
+      input#job_salary_to.numeric.integer.form-control.input-sm(name='salary_to', step='1000', type='number')
+      span.text-black.block per year
+
+  .form-group.form-horizontal.col-md-6.col-lg-5
+    label.control-label.col-md-4.com-lg-4
+      | Currency
+    .col-sm-8
+      select#job_salary_currency.select2.form-control.input-sm(name='salary_currency', tabindex='-1')
+        option(value='') Select currency
+        option(value='840') United States Dollar (USD)
+        option(value='978') Euro (EUR)
+        option(value='826') British Pound (GBP)
+        option(value='124') Canadian Dollar (CAD)
+        option(value='036') Australian Dollar (AUD)
+        option(value='356') Indian Rupee (INR)
+        option(value='784') United Arab Emirates Dirham (AED)
+        option(value='971') Afghan Afghani (AFN)
+        option(value='008') Albanian Lek (ALL)
+        option(value='051') Armenian Dram (AMD)
+        option(value='532') Netherlands Antillean Gulden (ANG)
+        option(value='973') Angolan Kwanza (AOA)
+        option(value='032') Argentine Peso (ARS)
+        option(value='036') Australian Dollar (AUD)
+        option(value='533') Aruban Florin (AWG)
+        option(value='944') Azerbaijani Manat (AZN)
+        option(value='977') Bosnia and Herzegovina Convertible Mark (BAM)
+        option(value='052') Barbadian Dollar (BBD)
+        option(value='050') Bangladeshi Taka (BDT)
+        option(value='975') Bulgarian Lev (BGN)
+        option(value='048') Bahraini Dinar (BHD)
+        option(value='108') Burundian Franc (BIF)
+        option(value='060') Bermudian Dollar (BMD)
+        option(value='096') Brunei Dollar (BND)
+        option(value='068') Bolivian Boliviano (BOB)
+        option(value='986') Brazilian Real (BRL)
+        option(value='044') Bahamian Dollar (BSD)
+        option(value='064') Bhutanese Ngultrum (BTN)
+        option(value='072') Botswana Pula (BWP)
+        option(value='974') Belarusian Ruble (BYR)
+        option(value='084') Belize Dollar (BZD)
+        option(value='124') Canadian Dollar (CAD)
+        option(value='976') Congolese Franc (CDF)
+        option(value='756') Swiss Franc (CHF)
+        option(value='152') Chilean Peso (CLP)
+        option(value='156') Chinese Renminbi Yuan (CNY)
+        option(value='170') Colombian Peso (COP)
+        option(value='188') Costa Rican Col&oacute;n (CRC)
+        option(value='931') Cuban Convertible Peso (CUC)
+        option(value='192') Cuban Peso (CUP)
+        option(value='132') Cape Verdean Escudo (CVE)
+        option(value='203') Czech Koruna (CZK)
+        option(value='262') Djiboutian Franc (DJF)
+        option(value='208') Danish Krone (DKK)
+        option(value='214') Dominican Peso (DOP)
+        option(value='012') Algerian Dinar (DZD)
+        option(value='818') Egyptian Pound (EGP)
+        option(value='232') Eritrean Nakfa (ERN)
+        option(value='230') Ethiopian Birr (ETB)
+        option(value='978') Euro (EUR)
+        option(value='242') Fijian Dollar (FJD)
+        option(value='238') Falkland Pound (FKP)
+        option(value='826') British Pound (GBP)
+        option(value='981') Georgian Lari (GEL)
+        option(value='936') Ghanaian Cedi (GHS)
+        option(value='292') Gibraltar Pound (GIP)
+        option(value='270') Gambian Dalasi (GMD)
+        option(value='324') Guinean Franc (GNF)
+        option(value='320') Guatemalan Quetzal (GTQ)
+        option(value='328') Guyanese Dollar (GYD)
+        option(value='344') Hong Kong Dollar (HKD)
+        option(value='340') Honduran Lempira (HNL)
+        option(value='191') Croatian Kuna (HRK)
+        option(value='332') Haitian Gourde (HTG)
+        option(value='348') Hungarian Forint (HUF)
+        option(value='360') Indonesian Rupiah (IDR)
+        option(value='376') Israeli New Sheqel (ILS)
+        option(value='356') Indian Rupee (INR)
+        option(value='368') Iraqi Dinar (IQD)
+        option(value='364') Iranian Rial (IRR)
+        option(value='352') Icelandic Kr&oacute;na (ISK)
+        option(value='388') Jamaican Dollar (JMD)
+        option(value='400') Jordanian Dinar (JOD)
+        option(value='392') Japanese Yen (JPY)
+        option(value='404') Kenyan Shilling (KES)
+        option(value='417') Kyrgyzstani Som (KGS)
+        option(value='116') Cambodian Riel (KHR)
+        option(value='174') Comorian Franc (KMF)
+        option(value='408') North Korean Won (KPW)
+        option(value='410') South Korean Won (KRW)
+        option(value='414') Kuwaiti Dinar (KWD)
+        option(value='136') Cayman Islands Dollar (KYD)
+        option(value='398') Kazakhstani Tenge (KZT)
+        option(value='418') Lao Kip (LAK)
+        option(value='422') Lebanese Pound (LBP)
+        option(value='144') Sri Lankan Rupee (LKR)
+        option(value='430') Liberian Dollar (LRD)
+        option(value='426') Lesotho Loti (LSL)
+        option(value='440') Lithuanian Litas (LTL)
+        option(value='428') Latvian Lats (LVL)
+        option(value='434') Libyan Dinar (LYD)
+        option(value='504') Moroccan Dirham (MAD)
+        option(value='498') Moldovan Leu (MDL)
+        option(value='969') Malagasy Ariary (MGA)
+        option(value='807') Macedonian Denar (MKD)
+        option(value='104') Myanmar Kyat (MMK)
+        option(value='496') Mongolian T&ouml;gr&ouml;g (MNT)
+        option(value='446') Macanese Pataca (MOP)
+        option(value='478') Mauritanian Ouguiya (MRO)
+        option(value='480') Mauritian Rupee (MUR)
+        option(value='462') Maldivian Rufiyaa (MVR)
+        option(value='454') Malawian Kwacha (MWK)
+        option(value='484') Mexican Peso (MXN)
+        option(value='458') Malaysian Ringgit (MYR)
+        option(value='943') Mozambican Metical (MZN)
+        option(value='516') Namibian Dollar (NAD)
+        option(value='566') Nigerian Naira (NGN)
+        option(value='558') Nicaraguan C&oacute;rdoba (NIO)
+        option(value='578') Norwegian Krone (NOK)
+        option(value='524') Nepalese Rupee (NPR)
+        option(value='554') New Zealand Dollar (NZD)
+        option(value='512') Omani Rial (OMR)
+        option(value='590') Panamanian Balboa (PAB)
+        option(value='604') Peruvian Nuevo Sol (PEN)
+        option(value='598') Papua New Guinean Kina (PGK)
+        option(value='608') Philippine Peso (PHP)
+        option(value='586') Pakistani Rupee (PKR)
+        option(value='985') Polish Z&lstrok;oty (PLN)
+        option(value='600') Paraguayan Guaran&iacute; (PYG)
+        option(value='634') Qatari Riyal (QAR)
+        option(value='946') Romanian Leu (RON)
+        option(value='941') Serbian Dinar (RSD)
+        option(value='643') Russian Ruble (RUB)
+        option(value='646') Rwandan Franc (RWF)
+        option(value='682') Saudi Riyal (SAR)
+        option(value='090') Solomon Islands Dollar (SBD)
+        option(value='690') Seychellois Rupee (SCR)
+        option(value='938') Sudanese Pound (SDG)
+        option(value='752') Swedish Krona (SEK)
+        option(value='702') Singapore Dollar (SGD)
+        option(value='654') Saint Helenian Pound (SHP)
+        option(value='703') Slovak Koruna (SKK)
+        option(value='694') Sierra Leonean Leone (SLL)
+        option(value='706') Somali Shilling (SOS)
+        option(value='968') Surinamese Dollar (SRD)
+        option(value='678') S&atilde;o Tom&eacute; and Pr&iacute;ncipe Dobra (STD)
+        option(value='222') Salvadoran Col&oacute;n (SVC)
+        option(value='760') Syrian Pound (SYP)
+        option(value='748') Swazi Lilangeni (SZL)
+        option(value='764') Thai Baht (THB)
+        option(value='972') Tajikistani Somoni (TJS)
+        option(value='934') Turkmenistani Manat (TMM)
+        option(value='788') Tunisian Dinar (TND)
+        option(value='776') Tongan Pa&#x2BB;anga (TOP)
+        option(value='949') Turkish Lira (TRY)
+        option(value='780') Trinidad and Tobago Dollar (TTD)
+        option(value='901') New Taiwan Dollar (TWD)
+        option(value='834') Tanzanian Shilling (TZS)
+        option(value='980') Ukrainian Hryvnia (UAH)
+        option(value='800') Ugandan Shilling (UGX)
+        option(value='840') United States Dollar (USD)
+        option(value='858') Uruguayan Peso (UYU)
+        option(value='860') Uzbekistani Som (UZS)
+        option(value='937') Venezuelan Bol&iacute;var (VEF)
+        option(value='704') Vietnamese &Dstrok;&#x1ED3;ng (VND)
+        option(value='548') Vanuatu Vatu (VUV)
+        option(value='882') Samoan Tala (WST)
+        option(value='950') Central African Cfa Franc (XAF)
+        option(value='951') East Caribbean Dollar (XCD)
+        option(value='952') West African Cfa Franc (XOF)
+        option(value='953') Cfp Franc (XPF)
+        option(value='886') Yemeni Rial (YER)
+        option(value='710') South African Rand (ZAR)
+        option(value='894') Zambian Kwacha (ZMK)
+        option(value='233') Estonian Kroon (EEK)
+        option(value='932') Zimbabwean Dollar (ZWL)
+
+  .clearfix
+
+  .form-group.col-md-12.col-lg-12
+    label.control-label.col-md-2.com-lg-2.m-t-xs.pad-r-n
+      | Keywords
+      small.text-gray.block.text-xs only the first 5 will be used for targeting
+
+    .col-md-10.com-lg-10.pad-l-n
+      input#job_keyword_tokens.form-control.input-sm(name='keyword_tokens', tabindex='-1' multiple )
+
+  .clearfix

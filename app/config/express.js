@@ -97,9 +97,9 @@ module.exports = function (app, passport) {
     resave: false,
     saveUninitialized: true,
     secret: pkg.name,
-    store: RedisStoreSession
+    store: RedisStoreSession,
     // cookie : {
-    //   maxAge: 604800
+    //   maxAge: 86400
     // }
   }));
 
@@ -109,6 +109,7 @@ module.exports = function (app, passport) {
 
   var localsVariable = function() {
     return function (req, res, next) {
+
       res.locals.pkg       = pkg
       res.locals.NODE_ENV  = env
       res.locals.CONFIG    = CONFIG
@@ -116,7 +117,7 @@ module.exports = function (app, passport) {
       res.locals.utility   = require('utility');
       res.locals.validator = require('validator');
       if(_.isObject(req.user)) {
-        res.locals.user_session = JSON.mask(req.user, '_id,email,firstname,lastname,photo_profile,country');
+        res.locals.user_session = JSON.mask(req.user, '_id,email,firstname,lastname,photo_profile,country,company');
       }
       next()
     }
@@ -125,7 +126,7 @@ module.exports = function (app, passport) {
   app.use(parallelMiddleware([
     lusca.csrf(),
     flash(),
-    require(CONFIG.ROOT + '/app/helper/views-helper')(pkg.name),
+    require('view-helpers')(pkg.name),
     localsVariable()
   ]));
 
