@@ -9,7 +9,7 @@ mixin headerHome
           span.icon-bar
         a.brandLogo.navbar-brand(href='/')
           img.m-r-xs(src=CONFIG.CDN_HOST + "/img/app.svg" width="42" height="42")
-          span.text-xl.font-bold #{pkg.product_name}
+          span.text-xl.font-bold #{CONFIG.APP.name}
 
       nav.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
         ul.nav.navbar-nav.navbar-right
