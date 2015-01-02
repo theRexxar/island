@@ -79,7 +79,7 @@ exports.signup = function (req, res) {
     res.redirect('/dashboards')
   } else {
     res.render('users/signup', {
-      titlePage: 'Join Apfly · '+ CONFIG.APP.name,
+      titlePage: 'Join Scaleable · '+ CONFIG.APP.name,
       flash_error: req.flash('flash_error'),
       user: new User()
     })

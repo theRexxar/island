@@ -6,11 +6,11 @@ var rootPath = path.normalize(__dirname + '/../..')
 var config = {
   ROOT     : rootPath,
   APP      : {
-    name : 'Apfly'
+    name : 'Scaleable'
   },
-  BASE_HOST : 'http://apflying.com',
-  BASE_API_HOST : 'http://api.apflying.com',
-  CDN_HOST : 'http://cdn.apflying.com',
+  BASE_HOST : 'http://scaleable.co',
+  BASE_API_HOST : 'http://api.scaleable.co',
+  CDN_HOST : 'http://cdn.scaleable.co',
   SERVER: {
     port: 3001,
     hostname: process.env.HOSTNAME || '127.0.0.1',
