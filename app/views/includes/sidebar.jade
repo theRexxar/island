@@ -63,7 +63,7 @@ mixin sidebarJob(current, jobId)
   aside.row.bg-gray-lighter
     ul.nav.nav-sidebar.jobs.m-t-sm.m-b-sm
       li(class= (current === "jobs" ? "active" : ''))
-        a.h4(href= (current === "jobs" ? "#" : "/jobs/#{jobId}"))
+        a.h4(href= (current === "jobs" ? "#" : "/jobs/#{jobId}/edit"))
           i.fa.fa-briefcase
           | &nbsp; &nbsp;The Jobs
         span.info.text-sm

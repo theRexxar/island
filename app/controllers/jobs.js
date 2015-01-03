@@ -12,6 +12,12 @@ exports.create = function (req, res) {
   })
 }
 
+exports.edit = function (req, res) {
+  res.render('jobs/edit', {
+    bodyClass : 'jobs'
+  })
+}
+
 exports.applicationForm = function (req, res) {
   res.render('jobs/application-form', {
     bodyClass : 'jobs'

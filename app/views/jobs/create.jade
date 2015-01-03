@@ -26,7 +26,7 @@ block main
 
             .row.m-t-sm
               .col-md-3.col-lg-3.form-group
-                select#jobCountryCode.select2.input-lg.form-control(name='country_code' tabindex='-1')
+                select#jobCountryCode.select2.form-control(name='country_code' tabindex='-1')
                   option(value='-1') Select a country...
                   option(value='ID') Indonesia
                   option(value='SG') Singapore
@@ -285,6 +285,14 @@ block main
                   option(value='ZW') Zimbabwe
                   option(value='AX') &angst;land Islands
 
+              .col-md-3.col-lg-3.form-group
+                input.form-control(type="text" placeholder="State/Region" name="state_code")
+
+              .col-md-3.col-lg-3.form-group
+                input.form-control(type="text" placeholder="City" name="city")
+
+              .col-md-3.col-lg-3.form-group
+                input.form-control(type="text" placeholder="Zip Code" name="job_zip_code")
             .row
               .col-md-12.col-lg-12
                 .form-group

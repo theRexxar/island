@@ -16,7 +16,7 @@ var config = {
     hostname: process.env.HOSTNAME || '127.0.0.1',
   },
   Db: {
-    url: 'mongodb://localhost/hireable_prod'
+    url: 'mongodb://localhost/scaleable_prod'
   },
   REDIS: {
     host: '127.0.0.1',
