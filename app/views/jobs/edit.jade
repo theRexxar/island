@@ -18,11 +18,11 @@ block main
             input(type='hidden', name='_csrf', value="#{_csrf}")
             .row.m-t-md
               .col-md-5.col-lg-5.form-group
-                input.form-control.input-lg(type="text" placeholder="Position Title" name="name")
+                input.form-control.input-lg(type="text" placeholder="Position Title" name="name" value=req.jobs.name)
               .col-md-4.col-lg-4.form-group
-                input.form-control.input-lg(type="text" placeholder="Departement" name="department")
+                input.form-control.input-lg(type="text" placeholder="Departement" name="department" value=req.jobs.department)
               .col-md-3.col-lg-3.form-group
-                input.form-control.input-lg(type="text" placeholder="Code" name="code")
+                input.form-control.input-lg(type="text" placeholder="Code" name="code" value=req.jobs.code)
 
             .row.m-t-sm
               .col-md-3.col-lg-3.form-group
@@ -300,15 +300,20 @@ block main
                   label.h4.text-darker
                     i.fa.fa-bars &nbsp;&nbsp;
                     | Job Brief
-                  textarea.textnote.form-control(rows="8" name="description")
-
+                  if req.jobs.description
+                    textarea.textnote.form-control(rows="8" name="description") #{HtmlEntities.decode(req.jobs.description)}
+                  else
+                    textarea.textnote.form-control(rows="8" name="description")
             .row
               .col-md-12.col-lg-12
                 .form-group
                   label.h4.text-darker
                     i.fa.fa-check-square-o &nbsp;&nbsp;
                     | Requirements
-                  textarea.textnote.form-control(rows="8" name="requirements")
+                  if req.jobs.requirements
+                    textarea.textnote.form-control(rows="8" name="requirements") #{HtmlEntities.decode(req.jobs.requirements)}
+                  else
+                    textarea.textnote.form-control(rows="8" name="requirements")
 
             .row
               .col-md-12.col-lg-12
@@ -316,7 +321,10 @@ block main
                   label.h4.text-darker
                     i.fa.fa-gift &nbsp;&nbsp;
                     | Benefits
-                  textarea.textnote.form-control(rows="8" name="benefits")
+                  if req.jobs.benefits
+                    textarea.textnote.form-control(rows="8" name="benefits") #{HtmlEntities.decode(req.jobs.benefits)}
+                  else
+                    textarea.textnote.form-control(rows="8" name="benefits")
 
             .row.m-b-lg
               .col-md-12.col-lg-12

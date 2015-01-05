@@ -11,5 +11,6 @@ Route
   .get('/create', jobsControllers.create)
   .get('/:positionId/edit', jobsControllers.edit)
   .get('/:positionId/application-form', jobsControllers.applicationForm)
+  .param('positionId', jobsControllers.load)
 
 module.exports = Route

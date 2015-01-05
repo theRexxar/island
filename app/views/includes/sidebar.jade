@@ -63,7 +63,7 @@ mixin sidebarJob(current, jobId)
   aside.row.bg-gray-lighter
     ul.nav.nav-sidebar.jobs.m-t-sm.m-b-sm
       li(class= (current === "jobs" ? "active" : ''))
-        a.h4(href= (current === "jobs" ? "#" : "/jobs/#{jobId}/edit"))
+        a.h4(href= (current === "jobs" ? "#" : "/jobs/#{req.jobs._id}/edit"))
           i.fa.fa-briefcase
           | &nbsp; &nbsp;The Jobs
         span.info.text-sm
@@ -74,14 +74,14 @@ mixin sidebarJob(current, jobId)
             | with you
 
       li(class= (current === "application-form" ? "active" : ''))
-        a.h4(href= (current === "application-form" ? "#" : '/jobs/#{jobId}/application-form/'))
+        a.h4(href= (current === "application-form" ? "#" : '/jobs/#{req.jobs._id}/application-form/'))
           i.fa.fa-list-ul
           | &nbsp; &nbsp;Applicantion Form
         span.info.text-sm
           | Design the applicantion from for this job position.
 
       li(class= (current === "recruiters" ? "active" : ''))
-        a.h4(href= (current === "recruiters" ? "#" : '/jobs/#{jobId}/recruiters'))
+        a.h4(href= (current === "recruiters" ? "#" : '/jobs/#{req.jobs._id}/recruiters'))
           i.fa.fa-users
           | &nbsp; &nbsp;Recruiters
         span.info.text-sm

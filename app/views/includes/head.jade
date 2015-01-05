@@ -27,6 +27,6 @@ head(prefix="og: http://ogp.me/ns# hireable: http://ogp.me/ns/apps/hireable#")
   //[if lt IE 9]> <script src="js/ie/html5shiv.js"></script> <script src="js/ie/respond.min.js"></script> <script src="js/ie/excanvas.js"></script> <![endif]
 
 if bodyClass
-  body(class="#{bodyClass}")
+  body(class="apps #{bodyClass}")
 else
-  body
+  body.apps

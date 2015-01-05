@@ -6,7 +6,7 @@ block main
       .col-sm-12.col-md-9.col-lg-10
 
         .published-position-block.m-b-xl
-          div.block-title.m-t-sm
+          .block-title
             h3.m-t-none.text-black
               i.fa.fa-cloud &nbsp;
               | PUBLISHED POSITIONS
@@ -19,7 +19,7 @@ block main
           //-        | Create a new position&nbsp;
           //-        i.fa.fa-chevron-right
 
-          .panel.panel-default.m-b
+          //- .panel.panel-default.m-b
             .m-t-sm.m-b-sm
               .col-md-10
                 span.h4.m-t-none.inline.m-r-sm.job-title Software Engineer
@@ -28,38 +28,38 @@ block main
                 span.h5.inline.m-r-xs.job-type Full Time
 
               .col-md-2.m-t-sm.text-right
-                a.text-dark(href="#")
+                span.text-gray(href="#" data-placement="bottom" data-toggle="tooltip" title="Total candidates: 2")
                   i.fa.fa-user &nbsp;
                   span.text-xs.f-bold.m-t-n-xs.count-applicant 2
 
-                a.text-dark.m-l-sm(href="#")
+                span.text-gray.m-l-sm(href="#" data-placement="bottom" data-toggle="tooltip" title="Active candidates in pipeline: 2")
                   i.fa.fa-user &nbsp;
                   span.text-xs.f-bold.m-t-n-xs.count-applicant 2
               .clearfix
 
-            .b-t.b-b
+            .b-t.b-b.small-statistic
               .col-md-2.text-center.f-bold.b-r
-                .wrapper.process-source
+                a.block.text-dark.wrapper.process-source(href="/jobs/{{_id}}/browser/sourced")
                   span.count.f-bold.h3 2
                   strong.block SOURCE
               .col-md-2.text-center.b-r
-                .wrapper.process-applied
+                a.block.text-dark.wrapper.process-applied(href="/jobs/{{_id}}/browser/applied")
                   span.count.f-bold.h3 2
                   strong.block APPLIED
               .col-md-2.text-center.b-r
-                .wrapper.process-contacting
+                a.block.text-dark.wrapper.process-contacting(href="/jobs/{{_id}}/browser/phone-screen")
                   span.count.f-bold.h3 2
-                  strong.block CONTACT
+                  strong.block PHONE SCREEN
               .col-md-2.text-center.b-r
-                .wrapper.process-interview
+                a.block.text-dark.wrapper.process-interview(href="/jobs/{{_id}}/browser/interview")
                   span.count.f-bold.h3 -
                   strong.block INTERVIEW
               .col-md-2.text-center.b-r
-                .wrapper.process-offer
+                a.block.text-dark.wrapper.process-offer(href="/jobs/{{_id}}/browser/offer")
                   span.count.f-bold.h3 -
                   strong.block OFFER
               .col-md-2.text-center
-                .wrapper.process-hired
+                a.block.text-dark.wrapper.process-hired(href="/jobs/{{_id}}/browser/offer")
                   span.count.f-bold.h3 -
                   strong.block HIRED
               .clearfix
@@ -97,7 +97,7 @@ block main
                 .clearfix
 
         .closed-position-block.m-b-xl
-          div.block-title.m-t-sm
+          .block-title.m-t-sm
             h3.m-t-none.text-danger
               i.fa.fa-lock &nbsp;
               | CLOSED POSITIONS
@@ -105,48 +105,49 @@ block main
           //- .panel.panel-default.m-b.b-dotted.b-2x.no-bg
           //-   .wrapper-lg.text-center
           //-     p.h4.text-gray.f-normal Posisiton that no longer accepting new applicants will appear here.
-          .panel.panel-default.m-b
+
+          //- .panel.panel-default.m-b
             .m-t-sm.m-b-sm
               .col-md-10
-                span.h4.m-t-none.inline.m-r-sm.job-title Full Stack Engineer
+                span.h4.m-t-none.inline.m-r-sm.job-title Software Engineer
                 span.h5.inline.m-r-xs.job-division Engineer
                 span.h5.inline.m-r-xs.job-location San Francisco
                 span.h5.inline.m-r-xs.job-type Full Time
 
               .col-md-2.m-t-sm.text-right
-                a.text-dark(href="#")
+                span.text-gray(href="#" data-placement="bottom" data-toggle="tooltip" title="Total candidates: 2")
                   i.fa.fa-user &nbsp;
                   span.text-xs.f-bold.m-t-n-xs.count-applicant 2
 
-                a.text-dark.m-l-sm(href="#")
+                span.text-gray.m-l-sm(href="#" data-placement="bottom" data-toggle="tooltip" title="Active candidates in pipeline: 2")
                   i.fa.fa-user &nbsp;
                   span.text-xs.f-bold.m-t-n-xs.count-applicant 2
               .clearfix
 
-            .b-t.b-b
+            .b-t.b-b.small-statistic
               .col-md-2.text-center.f-bold.b-r
-                .wrapper.process-source
-                  span.count.f-bold.h3 -
+                a.block.text-dark.wrapper.process-source(href="/jobs/{{_id}}/browser/sourced")
+                  span.count.f-bold.h3 2
                   strong.block SOURCE
               .col-md-2.text-center.b-r
-                .wrapper.process-applied
-                  span.count.f-bold.h3 1
+                a.block.text-dark.wrapper.process-applied(href="/jobs/{{_id}}/browser/applied")
+                  span.count.f-bold.h3 2
                   strong.block APPLIED
               .col-md-2.text-center.b-r
-                .wrapper.process-contacting
-                  span.count.f-bold.h3 1
-                  strong.block CONTACT
+                a.block.text-dark.wrapper.process-contacting(href="/jobs/{{_id}}/browser/phone-screen")
+                  span.count.f-bold.h3 2
+                  strong.block PHONE SCREEN
               .col-md-2.text-center.b-r
-                .wrapper.process-interview
+                a.block.text-dark.wrapper.process-interview(href="/jobs/{{_id}}/browser/interview")
                   span.count.f-bold.h3 -
                   strong.block INTERVIEW
               .col-md-2.text-center.b-r
-                .wrapper.process-offer
+                a.block.text-dark.wrapper.process-offer(href="/jobs/{{_id}}/browser/offer")
                   span.count.f-bold.h3 -
                   strong.block OFFER
               .col-md-2.text-center
-                .wrapper.process-hired
-                  span.count.f-bold.h3 1
+                a.block.text-dark.wrapper.process-hired(href="/jobs/{{_id}}/browser/offer")
+                  span.count.f-bold.h3 -
                   strong.block HIRED
               .clearfix
 
@@ -155,7 +156,7 @@ block main
                 .col-md-9.col-lg-9.action-block
                   a.m-r-md(href="#")
                     i.fa.fa-eye &nbsp;
-                    | PREVIEW
+                    | VIEW
 
                   a.m-r-md(href="#")
                     i.fa.fa-pencil &nbsp;
@@ -165,9 +166,9 @@ block main
                     i.fa.fa-cloud-upload &nbsp;
                     | UPLOAD CANDIDATES
 
-                  a.m-r-md(href="#")
-                    i.fa.fa-archive &nbsp;
-                    | ARCHIVE
+                  a.m-r-md.text-disabled(href="#")
+                    i.fa.fa-bullhorn &nbsp;
+                    | ADVERTISE
 
                   a.m-r-md.text-disabled(href="#")
                     i.fa.fa-pie-chart &nbsp;
@@ -177,59 +178,16 @@ block main
                     i.fa.fa-copy &nbsp;
                     | CLONE
 
+                .col-md-3.col-lg-3.text-right.text-sm
+                  strong.job-code ENG-SE
+                  time.last-update.no-wrap updated 3 minutes ago
+                .clearfix
 
         .draft-position-block.m-b-xl
-          div.block-title.m-t-sm
+          .block-title.m-t-sm
             h3.m-t-none.text-dark
               i.fa.fa-edit &nbsp;
               | DRAFTS
-
-          .panel.panel-default.m-b
-            .position-item.wrapper.pos-rlt
-              h4.m-t-none Backend Developer
-              span.text-gray.inline.m-r-md
-                i.fa.fa-sitemap &nbsp;
-                | Engineering
-              span.text-gray
-                i.fa.fa-map-marker &nbsp;
-                | Central Singapore, Singapore
-
-              .actions
-                a(href='#')
-                  i.fa.fa-eye &nbsp;
-                  | VIEW
-                a.inline.m-l-md(href='/backend/jobs/30273/edit')
-                  i.fa.fa-pencil &nbsp;
-                  | EDIT
-                a.inline.m-l-md(data-method='post', href='#', rel='nofollow')
-                  i.fa.fa-copy &nbsp;
-                  | CLONE
-                a.inline.m-l-md(data-confirm='Are you sure you want to delete this position?', data-method='delete', href='#', rel='nofollow')
-                  i.fa.fa-remove &nbsp;
-                  | DELETE
-
-            .position-item.wrapper.pos-rlt
-              h4.m-t-none Frontend Developer
-              span.text-gray.inline.m-r-md
-                i.fa.fa-sitemap &nbsp;
-                | Engineering
-              span.text-gray
-                i.fa.fa-map-marker &nbsp;
-                | Central Singapore, Singapore
-
-              .actions
-                a(href='#')
-                  i.fa.fa-eye &nbsp;
-                  | VIEW
-                a.inline.m-l-md(href='/backend/jobs/30273/edit')
-                  i.fa.fa-pencil &nbsp;
-                  | EDIT
-                a.inline.m-l-md(data-method='post', href='#', rel='nofollow')
-                  i.fa.fa-copy &nbsp;
-                  | CLONE
-                a.inline.m-l-md(data-confirm='Are you sure you want to delete this position?', data-method='delete', href='#', rel='nofollow')
-                  i.fa.fa-remove &nbsp;
-                  | DELETE
 
           //- .panel.panel-default.m-b.b-dotted.b-2x.no-bg
           //-   .wrapper-lg.text-center
@@ -240,34 +198,34 @@ block main
           //-        i.fa.fa-chevron-right
 
         .archive-position-block.m-b-xl
-          div.block-title.m-t-sm
-            h3.m-t-none.text-gray
-              i.fa.fa-archive &nbsp;
-              | ARCHIVED POSITIONS
+          //- .block-title.m-t-sm
+          //-   h3.m-t-none.text-gray
+          //-     i.fa.fa-archive &nbsp;
+          //-     | ARCHIVED POSITIONS
 
-          .panel.panel-default.m-b
-            .position-item.wrapper.pos-rlt
-              h4.m-t-none DevOps Engineering
-              span.text-gray.inline.m-r-md
-                i.fa.fa-sitemap &nbsp;
-                | Engineering
-              span.text-gray
-                i.fa.fa-map-marker &nbsp;
-                | Central Singapore, Singapore
+          //- .panel.panel-default.m-b
+          //-   .position-item.wrapper.pos-rlt
+          //-     h4.m-t-none DevOps Engineering
+          //-     span.text-gray.inline.m-r-md
+          //-       i.fa.fa-sitemap &nbsp;
+          //-       | Engineering
+          //-     span.text-gray
+          //-       i.fa.fa-map-marker &nbsp;
+          //-       | Central Singapore, Singapore
 
-              .actions
-                a(href='#')
-                  i.fa.fa-eye &nbsp;
-                  | VIEW
-                a.inline.m-l-md(href='/backend/jobs/30273/edit')
-                  i.fa.fa-pencil &nbsp;
-                  | EDIT
-                a.inline.m-l-md(data-method='post', href='#', rel='nofollow')
-                  i.fa.fa-copy &nbsp;
-                  | CLONE
-                a.inline.m-l-md(data-confirm='Are you sure you want to delete this position?', data-method='delete', href='#', rel='nofollow')
-                  i.fa.fa-remove &nbsp;
-                  | DELETE
+          //-     .actions
+          //-       a(href='#')
+          //-         i.fa.fa-eye &nbsp;
+          //-         | VIEW
+          //-       a.inline.m-l-md(href='/backend/jobs/30273/edit')
+          //-         i.fa.fa-pencil &nbsp;
+          //-         | EDIT
+          //-       a.inline.m-l-md(data-method='post', href='#', rel='nofollow')
+          //-         i.fa.fa-copy &nbsp;
+          //-         | CLONE
+          //-       a.inline.m-l-md(data-confirm='Are you sure you want to delete this position?', data-method='delete', href='#', rel='nofollow')
+          //-         i.fa.fa-remove &nbsp;
+          //-         | DELETE
 
       .col-sm-12.col-md-3.col-lg-2
         p
@@ -275,4 +233,184 @@ block main
             i.fa.fa-plus
             | &nbsp; Create New Posisiton
       .clearfix
+
+  script#jobPublishedIsEmptyTemplate(type='text/html').
+    <div class="panel panel-default m-b b-dotted b-2x no-bg">
+      <div class="wrapper-lg text-center">
+        <p class="h4 text-gray f-normal">Published positions appear on your careers page and collect applications from candidates</p>
+        <p class="h4 text-center"><a href="/jobs/create">Create a new position&nbsp;<i class="fa fa-chevron-right"></i></a></p>
+      </div>
+    </div>
+
+  script#jobDraftIsEmptyTemplate(type='text/html').
+    <div class="panel panel-default m-b b-dotted b-2x no-bg">
+      <div class="wrapper-lg text-center">
+        <p class="h4 text-gray f-normal">Drafts are job positions you have not yet published.
+          <a href="/jobs/create">
+            Create a new position&nbsp;<i class="fa fa-chevron-right"></i>
+          </a>
+        </p>
+      </div>
+    </div>
+
+  script#jobClosedIsEmptyTemplate(type='text/html').
+    <div class="panel panel-default m-b b-dotted b-2x no-bg">
+      <div class="wrapper-lg text-center">
+        <p class="h4 text-gray f-normal">Posisiton that no longer accepting new applicants will appear here.</p>
+      </div>
+    </div>
+
+  script#jobPublishItemTemplate(type="text/html").
+    <div class="panel panel-default m-b">
+      <div class="m-t-sm m-b-sm">
+        <div class="col-md-10">
+          <span class="h4 m-t-none inline m-r-sm job-title">Software Engineer</span>
+          <span class="h5 inline m-r-xs job-division">Engineer</span>
+          <span class="h5 inline m-r-xs job-location">San Francisco</span>
+          <span class="h5 inline m-r-xs job-type">Full Time</span>
+        </div>
+
+        <div class="col-md-2 m-t-sm text-right">
+          <span href="#" data-placement="bottom" data-toggle="tooltip" title="" class="text-gray" data-original-title="Total candidates: 2">
+            <i class="fa fa-user">&nbsp;</i>
+            <span class="text-xs f-bold m-t-n-xs count-applicant">2</span>
+          </span>
+
+          <span href="#" data-placement="bottom" data-toggle="tooltip" title="" class="text-gray m-l-sm" data-original-title="Active candidates in pipeline: 2">
+            <i class="fa fa-user">&nbsp;</i>
+            <span class="text-xs f-bold m-t-n-xs count-applicant">2</span>
+          </span>
+
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="b-t b-b">
+        <div class="col-md-2 text-center f-bold b-r">
+          <a href="/jobs/{{_id}}/browser/sourced" class="block wrapper process-source">
+            <span class="count f-bold h3">2</span>
+            <strong class="block">SOURCE</strong>
+          </a>
+        </div>
+
+        <div class="col-md-2 text-center b-r"><a href="/jobs/{{_id}}/browser/applied" class="block wrapper process-applied"><span class="count f-bold h3">2</span><strong class="block">APPLIED</strong></a></div>
+        <div class="col-md-2 text-center b-r"><a href="/jobs/{{_id}}/browser/phone-screen" class="block wrapper process-contacting"><span class="count f-bold h3">2</span><strong class="block">PHONE SCREEN</strong></a></div>
+        <div class="col-md-2 text-center b-r"><a href="/jobs/{{_id}}/browser/interview" class="block wrapper process-interview"><span class="count f-bold h3">-</span><strong class="block">INTERVIEW</strong></a></div>
+        <div class="col-md-2 text-center b-r"><a href="/jobs/{{_id}}/browser/offer" class="block wrapper process-offer"><span class="count f-bold h3">-</span><strong class="block">OFFER</strong></a></div>
+        <div class="col-md-2 text-center"><a href="/jobs/{{_id}}/browser/offer" class="block wrapper process-hired"><span class="count f-bold h3">-</span><strong class="block">HIRED</strong></a></div>
+        <div class="clearfix"></div>
+      </div>
+
+
+      <div class="wrapper-sm bg-gray-lighter">
+        <div class="row">
+          <div class="col-md-9 col-lg-9 action-block">
+            <a href="/jobs/{{_id}}/preview?show_description=true" class="m-r-md">
+              <i class="fa fa-eye">&nbsp;</i>VIEW
+            </a>
+            <a href="/jobs/{{_id}}/edit" class="m-r-md">
+              <i class="fa fa-pencil">&nbsp;</i>EDIT
+            </a>
+
+            <a href="#" class="m-r-md">
+              <i class="fa fa-cloud-upload">&nbsp;</i>UPLOAD CANDIDATES
+            </a>
+
+            <a href="#" class="m-r-md text-disabled">
+              <i class="fa fa-bullhorn">&nbsp;</i>ADVERTISE
+            </a>
+
+            <a href="#" class="m-r-md text-disabled">
+              <i class="fa fa-pie-chart">&nbsp;</i>REPORTS
+            </a>
+
+            <a href="/jobs/{{_id}}/clone" class="m-r-md">
+              <i class="fa fa-copy">&nbsp;</i>CLONE
+            </a>
+          </div>
+
+          <div class="col-md-3 col-lg-3 text-right text-sm"><strong class="job-code">ENG-SE</strong>
+            <time class="last-update no-wrap">updated 3 minutes ago</time>
+          </div>
+
+          <div class="clearfix"></div>
+
+        </div>
+      </div>
+    </div>
+
+  script#jobDraftItemTemplate(type='text/html').
+    <div class="panel panel-default m-b">
+    {{#jobs}}
+      <div class="position-item wrapper pos-rlt">
+        <h4 class="m-t-none">{{name}}</h4>
+
+        <span class="text-gray inline m-r-md">
+          <i class="fa fa-sitemap">&nbsp;</i>{{#department}}{{department}}{{/department}}{{^department}}Not Defined{{/department}}
+        </span>
+
+        {{#locations}}
+        <span class="text-gray">
+          <i class="fa fa-map-marker">&nbsp;</i>{{state_code}}, {{country_code}}
+        </span>
+        {{/locations}}
+        <div class="actions">
+          <a href="/jobs/{{_id}}/preview?show_description=true">
+            <i class="fa fa-eye">&nbsp;</i>VIEW
+          </a>
+          <a href="/jobs/{{_id}}/edit" class="inline m-l-md">
+            <i class="fa fa-pencil">&nbsp;</i>EDIT</a>
+          <a data-method="post" href="/jobs/{{_id}}/clone" rel="nofollow" class="inline m-l-md">
+            <i class="fa fa-copy">&nbsp;</i>CLONE
+          </a>
+          <a data-confirm="Are you sure you want to delete this position?" data-method="delete" href="/jobs/{{_id}}/delete" rel="nofollow" class="inline m-l-md">
+            <i class="fa fa-remove">&nbsp;</i>DELETE
+          </a>
+        </div>
+      </div>
+    {{/jobs}}
+    </div>
+
+  script#jobArchivedTemplate(type="text/html").
+
+    <div class="archive-position-block m-b-xl">
+      {{#jobs}}
+      <div class="block-title m-t-sm">
+        <h3 class="m-t-none text-gray"><i class="fa fa-archive">&nbsp;</i>ARCHIVED POSITIONS</h3>
+      </div>
+      {{/jobs}}
+
+      <div class="panel panel-default m-b">
+      {{#jobs}}
+        <div class="position-item wrapper pos-rlt">
+          <h4 class="m-t-none">{{name}}</h4>
+
+          <span class="text-gray inline m-r-md">
+            <i class="fa fa-sitemap">&nbsp;</i>{{#department}}{{department}}{{/department}}{{^department}}Not Defined{{/department}}
+          </span>
+
+          {{#locations}}
+          <span class="text-gray">
+            <i class="fa fa-map-marker">&nbsp;</i>{{state_code}}, {{country_code}}
+          </span>
+          {{/locations}}
+          <div class="actions">
+            <a href="/jobs/{{_id}}/preview?show_description=true">
+              <i class="fa fa-eye">&nbsp;</i>VIEW
+            </a>
+            <a href="/jobs/{{_id}}/edit" class="inline m-l-md">
+              <i class="fa fa-pencil">&nbsp;</i>EDIT</a>
+            <a data-method="post" href="/jobs/{{_id}}/clone" rel="nofollow" class="inline m-l-md">
+              <i class="fa fa-copy">&nbsp;</i>CLONE
+            </a>
+            <a data-confirm="Are you sure you want to delete this position?" data-method="delete" href="/jobs/{{_id}}/delete" rel="nofollow" class="inline m-l-md">
+              <i class="fa fa-remove">&nbsp;</i>DELETE
+            </a>
+          </div>
+        </div>
+      {{/jobs}}
+      </div>
+    </div>
+
 

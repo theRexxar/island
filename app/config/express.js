@@ -22,6 +22,9 @@ var _                = require('lodash')
 var async            = require('async')
 JSON.mask            = require('json-mask')
 
+var Entities = require('html-entities').AllHtmlEntities;
+var entities = new Entities();
+
 var parallelMiddleware = function parallel(middlewares) {
   return function (req, res, next) {
     async.each(middlewares, function (mw, cb) {
@@ -116,6 +119,7 @@ module.exports = function (app, passport) {
       res.locals._         = _
       res.locals.utility   = require('utility');
       res.locals.validator = require('validator');
+      res.locals.HtmlEntities = entities;
       if(_.isObject(req.user)) {
         res.locals.user_session = JSON.mask(req.user, '_id,email,firstname,lastname,photo_profile,country,company');
       }
