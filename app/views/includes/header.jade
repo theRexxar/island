@@ -2,7 +2,7 @@ mixin headerHome
   header#top.navbar.navbar-static-top.navbar-lpages(role='banner')
     .container
       .navbar-header
-        button.navbar-toggle.collapsed(type='button' data-toggle='collapse' data-target='.bs-navbar-collapse')
+        button.navbar-toggle.collapsed(type='button' data-toggle='collapse' data-target='.navbar-collapse')
           span.sr-only
           span.icon-bar
           span.icon-bar
@@ -13,18 +13,18 @@ mixin headerHome
 
       nav.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
         ul.nav.navbar-nav.navbar-right
+          li
+            a(href='/features') PRICING
+          li
+            a(href='/features') Features
+          li
+            a(href='/about') ABOUT
+          li
+            a(href='/https://blog.apflying.com') Blog
           if (req.isAuthenticated())
-            li
+            li.active
               a(href='/dashboards') My Dashboard
           else
-            li
-              a(href='/features') PRICING
-            li
-              a(href='/features') Features
-            li
-              a(href='/about') ABOUT
-            li
-              a(href='/https://blog.apflying.com') Blog
             li
               a(href='/login') Sign In
 
@@ -33,7 +33,7 @@ mixin headerDashboard
   header#top.navbar.navbar-fixed-top.navbar-dashboard.b-b(role='banner')
     .container-fluid
       .navbar-header
-        button.navbar-toggle.collapsed(type='button' data-toggle='collapse' data-target='.bs-navbar-collapse')
+        button.navbar-toggle.collapsed(type='button' data-toggle='collapse' data-target='.navbar-collapse')
           span.sr-only
           span.icon-bar
           span.icon-bar
@@ -92,7 +92,7 @@ mixin headerDashboard
                 a(href="/logout" class="btn-logout")
                   i.fa.fa-power-off.text-danger
                   | &nbsp; Logout
-          li
+          li.hidden-xs
             a.bg-gray.text-warning(href="#")
               span.fa.fa-lg.fa-question-circle
 

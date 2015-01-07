@@ -113,13 +113,18 @@ module.exports = function (app, passport) {
   var localsVariable = function() {
     return function (req, res, next) {
 
-      res.locals.pkg       = pkg
-      res.locals.NODE_ENV  = env
-      res.locals.CONFIG    = CONFIG
-      res.locals._         = _
-      res.locals.utility   = require('utility');
-      res.locals.validator = require('validator');
-      res.locals.HtmlEntities = entities;
+      CONFIG.countries  = require(CONFIG.ROOT + '/app/helper/countries.json')
+      CONFIG.currencies = require('country-data').currencies.all
+      CONFIG.staticData = require(CONFIG.ROOT + '/app/helper/static-data')
+
+      res.locals.pkg          = pkg
+      res.locals.NODE_ENV     = env
+      res.locals.CONFIG       = CONFIG
+      res.locals._            = _
+      res.locals.utility      = require('utility')
+      res.locals.validator    = require('validator')
+      res.locals.HtmlEntities = entities
+
       if(_.isObject(req.user)) {
         res.locals.user_session = JSON.mask(req.user, '_id,email,firstname,lastname,photo_profile,country,company');
       }
