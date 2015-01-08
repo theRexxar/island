@@ -1,8 +1,6 @@
 "use strict";
 
-var CONFIG      = require('../config');
-var mongoose    = require('mongoose');
-var User        = require(CONFIG.ROOT + '/app/models/user')
+var User        = db.model('User')
 var async       = require('async');
 var utility     = require('utility');
 var crypto      = require('crypto');

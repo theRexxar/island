@@ -3,10 +3,10 @@
 // Module dependencies
 global.CONFIG   = require(__dirname + '/app/config')
 global.express  = require('express')
+global.db       = require('db')
 
 var path     = require('path')
 var fs       = require('fs')
-var mongoose = require('mongoose')
 var passport = require('passport')
 
 var app      = express()
@@ -14,15 +14,7 @@ var app      = express()
 app.config = CONFIG
 
 // Database
-require(__dirname + '/app/config/database')(CONFIG, mongoose)
-
-var models_path = __dirname + '/app/models'
-
-fs.readdirSync(models_path).forEach(function (file) {
-  if (~file.indexOf('.js') && file !== '.DS_Store') {
-    require(models_path + '/' + file)
-  }
-})
+require(__dirname + '/app/config/database')(CONFIG, db)
 
 require(__dirname + '/app/config/passport')
 

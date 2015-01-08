@@ -1,13 +1,12 @@
 "use strict";
 
 var CONFIG           = require('./index')
-var mongoose         = require('mongoose')
 var LocalStrategy    = require('passport-local').Strategy
 var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 var GoogleStrategy   = require('passport-google-oauth').OAuth2Strategy;
 var passport         = require('passport')
-var User             = require(CONFIG.ROOT + '/app/models/user')
-var Company          = require(CONFIG.ROOT + '/app/models/company')
+var User             = db.model('User')
+var Company          = db.model('Company')
 var _                = require('lodash')
 
 // serialize sessions

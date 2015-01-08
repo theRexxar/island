@@ -210,6 +210,18 @@
         }
       }
     },
+    "country-data": {
+      "version": "0.0.16",
+      "from": "country-data@",
+      "resolved": "https://registry.npmjs.org/country-data/-/country-data-0.0.16.tgz",
+      "dependencies": {
+        "underscore": {
+          "version": "1.4.4",
+          "from": "underscore@~1.4.4",
+          "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.4.4.tgz"
+        }
+      }
+    },
     "csurf": {
       "version": "1.6.3",
       "from": "https://registry.npmjs.org/csurf/-/csurf-1.6.3.tgz",
@@ -282,6 +294,28 @@
               "resolved": "https://registry.npmjs.org/statuses/-/statuses-1.2.0.tgz"
             }
           }
+        }
+      }
+    },
+    "db": {
+      "version": "0.0.1",
+      "from": "db@git://github.com/aredo/db.git",
+      "resolved": "git://github.com/aredo/db.git#ef85d92b1010638f2fcaeee0bbed5c556a9ec38d",
+      "dependencies": {
+        "mime": {
+          "version": "1.2.11",
+          "from": "mime@^1.2.11",
+          "resolved": "https://registry.npmjs.org/mime/-/mime-1.2.11.tgz"
+        },
+        "mongoose-validator": {
+          "version": "1.0.3",
+          "from": "mongoose-validator@^1.0.3",
+          "resolved": "https://registry.npmjs.org/mongoose-validator/-/mongoose-validator-1.0.3.tgz"
+        },
+        "string": {
+          "version": "1.9.1",
+          "from": "string@^1.9.1",
+          "resolved": "https://registry.npmjs.org/string/-/string-1.9.1.tgz"
         }
       }
     },
@@ -531,6 +565,11 @@
         }
       }
     },
+    "express-cluster": {
+      "version": "0.0.3",
+      "from": "express-cluster@",
+      "resolved": "https://registry.npmjs.org/express-cluster/-/express-cluster-0.0.3.tgz"
+    },
     "express-flash": {
       "version": "0.0.2",
       "from": "express-flash@0.0.2",
@@ -773,6 +812,11 @@
           }
         }
       }
+    },
+    "html-entities": {
+      "version": "1.1.1",
+      "from": "html-entities@",
+      "resolved": "https://registry.npmjs.org/html-entities/-/html-entities-1.1.1.tgz"
     },
     "jade": {
       "version": "1.8.2",
