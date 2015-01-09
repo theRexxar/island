@@ -29,26 +29,38 @@ block main
               .col-md-3.col-lg-3.form-group
                 select#jobCountryCode.select2.input-lg.form-control(name='country_code' tabindex='-1')
                   each country, index in CONFIG.countries
-                    if req.jobs.locations.country_code === country.cca2
-                      option(value='#{country.cca2}' selected="selected") #{country.name.common}
+                    if req.jobs.locations
+                      if req.jobs.locations.country_code === country.cca2
+                        option(value='#{country.cca2}' selected="selected") #{country.name.common}
+                      else
+                        option(value='#{country.cca2}') #{country.name.common}
                     else
                       option(value='#{country.cca2}') #{country.name.common}
 
               .col-md-3.col-lg-3.form-group
-                if req.jobs.locations.state_code
-                  input.form-control(type="text" placeholder="State/Region" name="state_code" value="#{req.jobs.locations.state_code}")
+                if req.jobs.locations
+                  if req.jobs.locations.state_code
+                    input.form-control(type="text" placeholder="State/Region" name="state_code" value="#{req.jobs.locations.state_code}")
+                  else
+                    input.form-control(type="text" placeholder="State/Region" name="state_code")
                 else
                   input.form-control(type="text" placeholder="State/Region" name="state_code")
 
               .col-md-3.col-lg-3.form-group
-                if req.jobs.locations.city
-                  input.form-control(type="text" placeholder="City" name="city" value="#{req.jobs.locations.city}")
+                if req.jobs.locations
+                  if req.jobs.locations.city
+                    input.form-control(type="text" placeholder="City" name="city" value="#{req.jobs.locations.city}")
+                  else
+                    input.form-control(type="text" placeholder="City" name="city")
                 else
-                  input.form-control(type="text" placeholder="City" name="city")
+                    input.form-control(type="text" placeholder="City" name="city")
 
               .col-md-3.col-lg-3.form-group
-                if req.jobs.locations.job_zip_code
-                  input.form-control(type="text" placeholder="Zip Code" name="job_zip_code" value="#{req.jobs.locations.job_zip_code}")
+                if req.jobs.locations
+                  if req.jobs.locations.job_zip_code
+                    input.form-control(type="text" placeholder="Zip Code" name="job_zip_code" value="#{req.jobs.locations.job_zip_code}")
+                  else
+                    input.form-control(type="text" placeholder="Zip Code" name="job_zip_code")
                 else
                   input.form-control(type="text" placeholder="Zip Code" name="job_zip_code")
 
