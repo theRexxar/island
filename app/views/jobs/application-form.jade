@@ -9,8 +9,163 @@ block main
 
         mixin sidebarJob('application-form', req.params.positionId)
 
-      .col-sm-9.col-md-9.col-lg-10
-        .panel.panel-default.m-b
-          header.panel-heading
-            h4.m-n.f-bold Customize your application form
-          #editProfileBlock.panel-body
+      form#applicationFormSetting.application-form-setting.col-sm-9.col-md-9.col-lg-10
+        .row
+          .col-sm-7.col-md-7.col-lg-7
+            .panel.panel-default.m-b-none.r-t
+              header.panel-heading
+                h4.m-n.f-bold Customize your application form
+
+              #applicationFormBlock.panel-body
+                h4.m-b-lg.m-t-none PERSONAL INFORMATION
+                .form-outline
+                  .wrapper.control-group.pad-r-n.pad-l-n
+                    label.control-label.pull-left Name
+                    .controls.toggle.pull-right
+                      span.toggle-option-mandatory
+                        input#radio-name(type='radio' name='radio-name' checked='checked' value="1")
+                        label(for='radio-name') Mandatory
+                    .clearfix
+
+                  .wrapper.control-group.pad-r-n.pad-l-n
+                    label.control-label.pull-left Email
+                    .controls.toggle.pull-right
+                      span.toggle-option-mandatory
+                        input#radio-email(type='radio' name='radio-email' checked='checked' value="1")
+                        label(for='radio-email') Mandatory
+                    .clearfix
+
+                  .wrapper.control-group.pad-r-n.pad-l-n(data-name='headline')
+                    label.control-label.pull-left Headline
+                    .controls.toggle.pull-right
+                      span.m-l-sm.js-mandatory.toggle-option-mandatory
+                        input#headline-required(type='radio' name='radio-headline' value="1")
+                        label(for='headline-required') Mandatory
+                      span.m-l-sm.js-optional.toggle-option-optional
+                        input#headline-optional(type='radio' name='radio-headline' checked='' value="0")
+                        label(for='headline-optional') Optional
+                      span.m-l-sm.js-off.toggle-option-off
+                        input#headline-disabled(type='radio' name='radio-headline' value="-1")
+                        label(for='headline-disabled') Off
+                    .clearfix
+
+                  .wrapper.control-group.pad-r-n.pad-l-n(data-name='phone')
+                    label.control-label.pull-left Phone
+                    .controls.toggle.pull-right
+                      span.m-l-sm.js-mandatory.toggle-option-mandatory
+                        input#phone-required(type='radio' name='radio-phone' value="1")
+                        label(for='phone-required') Mandatory
+                      span.m-l-sm.js-optional.toggle-option-optional
+                        input#phone-optional(type='radio' name='radio-phone' checked='' value="0")
+                        label(for='phone-optional') Optional
+                      span.m-l-sm.js-off.toggle-option-off
+                        input#phone-disabled(type='radio' name='radio-phone' value="-1")
+                        label(for='phone-disabled') Off
+                    .clearfix
+
+                  .wrapper.control-group.pad-r-n.pad-l-n(data-name='address')
+                    label.control-label.pull-left Address
+                    .controls.toggle.pull-right
+                      span.m-l-sm.js-mandatory.toggle-option-mandatory
+                        input#address-required(type='radio' name='radio-address' value="1")
+                        label(for='address-required') Mandatory
+                      span.m-l-sm.js-optional.toggle-option-optional
+                        input#address-optional(type='radio' name='radio-address' checked='' value="-1")
+                        label(for='address-optional') Optional
+                      span.m-l-sm.js-off.toggle-option-off
+                        input#address-disabled(type='radio' name='radio-address' value="0")
+                        label(for='address-disabled') Off
+                    .clearfix
+
+                  .wrapper.control-group.pad-r-n.pad-l-n(data-name='avatar')
+                    label.control-label.pull-left Photo
+                    .controls.toggle.pull-right
+                      span.m-l-sm.js-mandatory.toggle-option-mandatory
+                        input#avatar-required(type='radio' name='radio-avatar' value="1")
+                        label(for='avatar-required') Mandatory
+                      span.m-l-sm.js-optional.toggle-option-optional
+                        input#avatar-optional(type='radio' name='radio-avatar' checked='' value="0")
+                        label(for='avatar-optional') Optional
+                      span.m-l-sm.js-off.toggle-option-off
+                        input#avatar-disabled(type='radio' name='radio-avatar' value="-1")
+                        label(for='avatar-disabled') Off
+                    .clearfix
+
+                h4.m-b-lg.m-t-lg CANDIDATE PROFILE
+                .form-outline
+                  .wrapper.control-group.pad-r-n.pad-l-n
+                    label.control-label.pull-left(data-name='education') Education
+                    .controls.toggle.pull-right
+                      span.m-l-sm.js-optional.toggle-option-optional
+                        input#education-optional(type='radio' name='radio-education' checked='' value="0")
+                        label(for='education-optional') Optional
+                      span.m-l-sm.js-off.toggle-option-off
+                        input#education-disabled(type='radio' name='radio-education' value="-1")
+                        label(for='education-disabled') Off
+                    .clearfix
+
+                  .wrapper.control-group.pad-r-n.pad-l-n
+                    label.control-label.pull-left(data-name='experience') Experience
+                    .controls.toggle.pull-right
+                      span.m-l-sm.js-optional.toggle-option-optional
+                        input#experience-optional(type='radio' name='radio-experience' checked='' value="0")
+                        label(for='experience-optional') Optional
+                      span.m-l-sm.js-off.toggle-option-off
+                        input#experience-disabled(type='radio' name='radio-experience' value="-1")
+                        label(for='experience-disabled') Off
+                    .clearfix
+
+                  .wrapper.control-group.pad-r-n.pad-l-n(data-name='summary')
+                    label.control-label.pull-left Summary
+                    .controls.toggle.pull-right
+                      span.m-l-sm.js-mandatory.toggle-option-mandatory
+                        input#summary-required(type='radio' name='radio-summary' value="1")
+                        label(for='summary-required') Mandatory
+                      span.m-l-sm.js-optional.toggle-option-optional
+                        input#summary-optional(type='radio' name='radio-summary'  checked='' value="0")
+                        label(for='summary-optional') Optional
+                      span.m-l-sm.js-off.toggle-option-off
+                        input#summary-disabled(type='radio' name='radio-summary' value="-1")
+                        label(for='summary-disabled') Off
+                    .clearfix
+
+                  .wrapper.control-group.pad-r-n.pad-l-n(data-name='resume')
+                    label.control-label.pull-left Resume
+                    .controls.toggle.pull-right
+                      span.m-l-sm.js-mandatory.toggle-option-mandatory
+                        input#resume-required(type='radio' name='radio-resume' value="1")
+                        label(for='resume-required') Mandatory
+                      span.m-l-sm.js-optional.toggle-option-optional
+                        input#resume-optional(type='radio' name='radio-resume' checked='' value="0")
+                        label(for='resume-optional') Optional
+                      span.m-l-sm.js-off.toggle-option-off
+                        input#resume-disabled(type='radio' name='radio-resume' value="-1")
+                        label(for='resume-disabled') Off
+                    .clearfix
+
+                  .wrapper.control-group.pad-r-n.pad-l-n
+                    label.control-label.pull-left(data-name='education') Cover Letter
+                    .controls.toggle.pull-right
+                      span.m-l-sm.js-mandatory.toggle-option-mandatory
+                        input#coverl-letter-required(type='radio' name='radio-coverl-letter' value="1")
+                        label(for='coverl-letter-required') Mandatory
+                      span.m-l-sm.js-optional.toggle-option-optional
+                        input#cover-letter-optional(type='radio' name='radio-cover-letter' checked='' value="0")
+                        label(for='cover-letter-optional') Optional
+                      span.m-l-sm.js-off.toggle-option-off
+                        input#cover-letter-disabled(type='radio' name='radio-cover-letter' value="-1")
+                        label(for='education-disabled') Off
+                    .clearfix
+
+                .m-b-xl
+
+          .col-sm-5.col-md-5.col-lg-5
+          .clearfix
+
+          .col-lg-12
+            .panel.panel-default.b-t-none
+              .panel-body
+                button.btn.btn-lg.text-xl.btn-primary(type="submit" data-loading-text="Creating...")
+                  i.fa.fa-check
+                  | &nbsp;Save Changes
+

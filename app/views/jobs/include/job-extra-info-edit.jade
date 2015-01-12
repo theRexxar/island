@@ -8,8 +8,11 @@
           select#job_employment_type.form-control.input-sm.long-length(name='job_employment_type')
             option(value='') Select type
             each employment, index in CONFIG.staticData.employmentType
-              if req.jobs.extra_info.job_employment_type === employment.name
-                option(value='#{employment.name}' selected="selected") #{employment.name}
+              if req.jobs.extra_info
+                if req.jobs.extra_info.job_employment_type === employment.name
+                  option(value='#{employment.name}' selected="selected") #{employment.name}
+                else
+                  option(value='#{employment.name}') #{employment.name}
               else
                 option(value='#{employment.name}') #{employment.name}
 
@@ -22,8 +25,11 @@
           select#job_industry.form-control.input-sm.long-length(name='job_industry')
             option(value='') Select industry
             each industry, index in CONFIG.staticData.industries
-              if req.jobs.extra_info.job_industry === industry.name
-                option(value='#{industry.name}' selected="selected") #{industry.name}
+              if req.jobs.extra_info
+                if req.jobs.extra_info.job_industry === industry.name
+                  option(value='#{industry.name}' selected="selected") #{industry.name}
+                else
+                  option(value='#{industry.name}') #{industry.name}
               else
                 option(value='#{industry.name}') #{industry.name}
 
@@ -35,8 +41,11 @@
           select#job_function.form-control.input-sm.long-length(name='job_function')
             option(value='') Select function
             each jobFunction, index in CONFIG.staticData.jobFunction
-              if req.jobs.extra_info.job_function === jobFunction.name
-                option(value='#{jobFunction.name}' selected="selected") #{jobFunction.name}
+              if req.jobs.extra_info
+                if req.jobs.extra_info.job_function === jobFunction.name
+                  option(value='#{jobFunction.name}' selected="selected") #{jobFunction.name}
+                else
+                  option(value='#{jobFunction.name}') #{jobFunction.name}
               else
                 option(value='#{jobFunction.name}') #{jobFunction.name}
 
@@ -49,8 +58,11 @@
           select#job_experience.form-control.input-sm.long-length(name='job_experience')
             option(value='') Select level
             each experience, index in CONFIG.staticData.jobExperiences
-              if req.jobs.extra_info.job_experience === experience.name
-                option(value='#{experience.name}' selected="selected") #{experience.name}
+              if req.jobs.extra_info
+                if req.jobs.extra_info.job_experience === experience.name
+                  option(value='#{experience.name}' selected="selected") #{experience.name}
+                else
+                  option(value='#{experience.name}') #{experience.name}
               else
                 option(value='#{experience.name}') #{experience.name}
 
@@ -62,8 +74,11 @@
           select#job_education.form-control.input-sm.long-length(name='job_education')
             option(value='') Select level
             each education, index in CONFIG.staticData.educations
-              if req.jobs.extra_info.job_education === education.name
-                option(value='#{education.name}' selected="selected") #{education.name}
+              if req.jobs.extra_info
+                if req.jobs.extra_info.job_education === education.name
+                  option(value='#{education.name}' selected="selected") #{education.name}
+                else
+                  option(value='#{education.name}') #{education.name}
               else
                 option(value='#{education.name}') #{education.name}
 
@@ -71,10 +86,17 @@
     label.control-label.col-sm-2.col-xs-12
       | Salary
     .col-sm-2.col-xs-5
-      input#job_salary_from.numeric.integer.form-control.input-sm(name='job_salary_from' step='1000' type='number' value=req.jobs.extra_info.job_salary_from)
+      if req.jobs.extra_info
+        input#job_salary_from.numeric.integer.form-control.input-sm(name='job_salary_from' step='1000' type='number' value=req.jobs.extra_info.job_salary_from)
+      else
+        input#job_salary_from.numeric.integer.form-control.input-sm(name='job_salary_from' step='1000' type='number')
+
     label.pull-left.control-label.block To
     .col-sm-2.col-xs-5
-      input#job_salary_to.numeric.integer.form-control.input-sm(name='job_salary_to' step='1000' type='number' value=req.jobs.extra_info.job_salary_to)
+      if req.jobs.extra_info
+        input#job_salary_to.numeric.integer.form-control.input-sm(name='job_salary_to' step='1000' type='number' value=req.jobs.extra_info.job_salary_to)
+      else
+        input#job_salary_to.numeric.integer.form-control.input-sm(name='job_salary_to' step='1000' type='number')
 
     label.pull-left.control-label.block per year
 
@@ -85,10 +107,13 @@
         option(value='') Select currency
         each currency, index in CONFIG.currencies
           if currency.code !== 'XXX'
-            if req.jobs.extra_info.job_salary_currency === currency.code
-              option(value='#{currency.code}' selected="selected") #{currency.name} (#{currency.code})
+            if req.jobs.extra_info
+              if req.jobs.extra_info.job_salary_currency === currency.code
+                option(value='#{currency.code}' selected="selected") #{currency.name} (#{currency.code})
+              else
+                option(value='#{currency.code}') #{currency.name} (#{currency.code})
             else
-              option(value='#{currency.code}') #{currency.name} (#{currency.code})
+                option(value='#{currency.code}') #{currency.name} (#{currency.code})
 
   .form-group.col-md-12.col-lg-12.form-horizontal
     label.control-label.col-sm-2

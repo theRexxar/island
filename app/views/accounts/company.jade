@@ -10,8 +10,92 @@ block main
         mixin sidebarProfile('company')
 
       .col-sm-9.col-md-9.col-lg-10
-        .panel.panel-default.m-b
-          header.panel-heading
-            h4.m-n.f-bold Company Profile
-          #companyProfileSetting.panel-body
+        form.update-company-profile(method="POST" novalidate="novalidate")
+          #companyProfileSetting.panel.panel-default.m-b-none
 
+          .panel.panel-default.b-t-none.m-b
+            .panel-body
+                button.btn.btn-lg.text-xl.btn-primary(type='submit', data-loading-text='Creating...')
+                  i.fa.fa-check
+                  | &nbsp;Save Changes
+
+
+
+  script#companySettingTpl(type="text/html").
+    <header class="panel-heading">
+      <h4 class="m-n f-bold">Company Profile</h4>
+    </header>
+    <div id="companyProfileSetting" class="panel-body">
+      <div class="form-group col-lg-4">
+        <label class="block">Company Logo</label>
+        <span class="m-b-sm m-t-sm fileinput-button btn btn-s-md btn-primary r">
+          <i class="fa fa-cloud-upload text"></i>&nbsp; Choose File
+          <input id="fileupload" type="file" name="company_logo">
+        </span>
+        <span class="m-l-sm">Or drop image &nbsp;<i class="fa fa-hand-o-right"></i></span>
+
+        <div id="progress-bar-upload" class="progress progress-success progress-striped progress-sm block">
+          <div style="width: 0%;" class="progress-bar bg-info lter"></div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="form-group col-lg-8 dropzone fade dropzone-upload-logo m-t-sm">
+        <div id="view-logo-company" class="r pad-r-n pad-l-n">
+          {{#company.logo_url}}
+            <div class="thumb-btn wrapper-sm inline b r"><img src="{{company.logo_url}}" width="120px" height="120px"></div>
+          {{/company.logo_url}}
+          {{^company.logo_url}}
+            <div class="thumb-btn wrapper-sm inline b r"><img src="{{cdnDomian}}/img/logo-dummy.png" width="120px" height="120px"></div>
+          {{/company.logo_url}}
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="clearfix">
+        <div class="form-group col-lg-6">
+          <label>Company Name *</label>
+          <input type="text" name="name" class="form-control" value="{{company.name}}">
+        </div>
+        <div class="form-group col-lg-6">
+          <label>Company Slug * &nbsp;<span class="text-muted label-preview">
+            <span class="text-sm">http://hire.apflying.com/</span>
+            {{#company.subdomain}}
+            <span class="text-dark m-l-n-xs">{{company.subdomain}}</span>
+            {{/company.subdomain}}
+            {{^company.subdomain}}
+            <span class="text-dark m-l-n-xs">company_slug</span>
+            {{/company.subdomain}}
+          </label>
+          <input type="text" name="subdomain" class="form-control" value="{{company.subdomain}}">
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="form-group col-lg-6">
+          <label>Website Url *</label>
+          <input type="text" name="website_url" value="{{company.website_url}}" class="form-control">
+        </div>
+        <div class="form-group col-lg-6">
+          <label>Company Address</label>
+          <input type="text" name="company_address" value="{{company.company_address}}" class="form-control">
+        </div>
+      </div>
+      <div class="form-group col-lg-12">
+        <label>Company Overview</label>
+        <textarea rows="3" name="company_overview" class="form-control">{{{company.company_overview}}}</textarea>
+      </div>
+    </div>
+    <header class="panel-heading b-t">
+      <h4 class="m-n f-bold">Career Page</h4>
+    </header>
+    <div id="careerPageSetting" class="panel-body m-b-md">
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <input id="layout-stacked" type="radio" name="career_page_layout" value="stacked">
+        <label for="layout-stacked"><img src="http://cdn.scaleable.com:8080/img/layout-stacked.png" width="22" height="22" class="m-l-sm m-r-sm">Stacked</label>
+        <p class="m-l-lg text-gray">Single column layout with your company description at the top and a list of job openings underneath it.</p>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <input id="layout-tiled" type="radio" name="career_page_layout" value="tiled">
+        <label for="layout-tiled"><img src="http://cdn.scaleable.com:8080/img/layout-tiled.png" width="22" height="22" class="m-l-sm m-r-sm">Tiled</label>
+        <p class="m-l-lg text-gray">Two column layout with your company description and your job openings side-by-side.</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>

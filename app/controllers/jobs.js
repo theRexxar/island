@@ -35,13 +35,14 @@ exports.load = function(req, res, next, proposalId){
 
   request(options, function callback(err, response, body) {
 
-    var output = JSON.parse(body);
-
     if (err) return next(err);
+
+    var output = JSON.parse(body);
 
     if (validator.isNull(output.data)) return next(new Error('not found'));
 
-    req.jobs = output.data
+    req.jobs = output.data.position
+    req.applicationForm = output.data.application_form
 
     next()
 

@@ -100,9 +100,14 @@ module.exports = function (app, passport) {
     resave: false,
     saveUninitialized: true,
     secret: pkg.name,
-    store: RedisStoreSession,
+    store: RedisStoreSession
     // cookie : {
     //   maxAge: 86400
+    //   path: '/',
+    //   httpOnly: true,
+    //   secure: true,
+    //   maxAge: 24 * 60 * 60 * 1000,
+    //   signed: false
     // }
   }));
 

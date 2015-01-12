@@ -9,6 +9,7 @@ var config = {
     name : 'Scaleable'
   },
   BASE_HOST : 'http://scaleable.dev:9876',
+  BASE_JOB_HOST : 'http://jobs.scaleable.dev:9876',
   BASE_API_HOST : 'http://api.scaleable.dev:6789',
   CDN_HOST : 'http://cdn.scaleable.com:8080',
   SERVER: {
