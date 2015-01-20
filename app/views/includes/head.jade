@@ -1,4 +1,4 @@
-head(prefix="og: http://ogp.me/ns# hireable: http://ogp.me/ns/apps/hireable#")
+head(prefix="og: http://ogp.me/ns# bakat.co: http://ogp.me/ns/apps/bakat.co#")
   meta(charset="utf-8")
   meta(name="viewport" content="width=device-width, initial-scale=1")
   meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
@@ -7,11 +7,24 @@ head(prefix="og: http://ogp.me/ns# hireable: http://ogp.me/ns/apps/hireable#")
   if titlePage
     title= titlePage
   else
-    title= CONFIG.APP.name
+    title= CONFIG.APP.name + ' - ' + CONFIG.APP.title
   meta(http-equiv="Content-type", content="text/html;charset=UTF-8")
   //- meta(name="keywords", content=pkg.keywords.join(","))
   meta(name="description", content=pkg.description)
-  link(href=CONFIG.CDN_HOST + "/favicon.png", rel="shortcut icon", type="image/x-icon")
+  link(rel="apple-touch-icon-precomposed" href= CONFIG.CDN_HOST + "/apple-touch-icon-precomposed.png")
+  link(rel="apple-touch-icon" sizes="57x57" href=CONFIG.CDN_HOST + "/apple-touch-icon-57-precomposed.png")
+  link(rel="apple-touch-icon" sizes="114x114" href=CONFIG.CDN_HOST + "/apple-touch-icon-114-precomposed.png")
+  link(rel="apple-touch-icon" sizes="72x72" href=CONFIG.CDN_HOST + "/apple-touch-icon-72-precomposed.png")
+  link(rel="apple-touch-icon" sizes="144x144" href=CONFIG.CDN_HOST + "/apple-touch-icon-144-precomposed.png")
+  link(rel="apple-touch-icon" sizes="60x60" href=CONFIG.CDN_HOST + "/apple-touch-icon-60-precomposed.png")
+  link(rel="apple-touch-icon" sizes="120x120" href=CONFIG.CDN_HOST + "/apple-touch-icon-120-precomposed.png")
+  link(rel="apple-touch-icon" sizes="76x76" href=CONFIG.CDN_HOST + "/apple-touch-icon-76-precomposed.png")
+  link(rel="apple-touch-icon" sizes="152x152" href=CONFIG.CDN_HOST + "/apple-touch-icon-152-precomposed.png")
+  link(rel="apple-touch-icon" sizes="180x180" href=CONFIG.CDN_HOST + "/apple-touch-icon-180-precomposed.png")
+  link(rel="icon" href=CONFIG.CDN_HOST + "/favicon.png")
+  link(rel="icon" href=CONFIG.CDN_HOST + "/favicon-192.png" sizes="192x192")
+  meta(name="msapplication-TileColor" content="#ffffff")
+  meta(name="msapplication-TileImage" content="/mstile-144x144.png")
 
   meta(property="og:title", content=pkg.name + ' - ' + title)
   meta(property="og:description", content=pkg.description)

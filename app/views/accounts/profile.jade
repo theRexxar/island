@@ -12,16 +12,119 @@ block main
       .col-sm-9.col-md-9.col-lg-10
         .panel.panel-default.m-b
           header.panel-heading
-            h4.m-n.f-bold Edit Your Profle
-          #editProfileBlock.panel-body
+            h4.m-n.f-bold
+              i.fa.fa-edit &nbsp;&nbsp;
+              | Edit Your Profle
+          form.update-user-profile(method="POST" novalidate="novalidate")
+            #editProfileBlock.panel-body
+              .col-md-6.col-sm-6
+                .form-group
+                  label Firstname *
+                  input.form-control(type="text" name="firstname" value=user.firstname)
+
+              .col-md-6.col-sm-6
+                .form-group
+                  label Lastname *
+                  input.form-control(type="text" name="lastname" value=user.lastname)
+
+              .col-md-12.col-sm-12
+                .form-group
+                  label Headline *
+                  .input-group
+                    .input-group-addon
+                      i.fa.fa-tag
+                    input.form-control(type="text" name="company_address" value=user.headline)
+
+              .col-md-6.col-sm-6
+                .form-group
+                  label Phone *
+                  .input-group
+                    .input-group-addon
+                      i.fa.fa-phone
+                    input.form-control(type="text" name="company_address" value=user.phone)
+
+              .col-md-6.col-sm-6
+                .form-group
+                  label Time Zone
+                  select#timeZone.select2.form-control(name='time_zone' tabindex='-1')
+                    option(value='-1') Select your time zone
+                    each time_zone, index in CONFIG.staticData.timeZones
+                      if time_zone.value === user.time_zone
+                        option(value='#{time_zone.value}' selected="selected") #{time_zone.text}
+                      else
+                        option(value='#{time_zone.value}') #{time_zone.text}
+
+              .col-md-6.col-sm-6
+                .form-group.m-t-sm
+                  label.h4 Activity report
+                  p When new candidates apply...
+                  .input-group.m-b-xs
+                    input#dailyReportFreq(type='radio' name='report_frequency' value="daily")
+                    label.m-l-sm(for='dailyReportFreq') Send me a daily report of new candidates
+                  .input-group.m-b-xs
+                    input#weeklyReportFreq(type='radio' name='report_frequency' checked='checked' value="weekly")
+                    label.m-l-sm(for='weeklyReportFreq') Send me a weekly summary report
+                  .input-group.m-b-xs
+                    input#dontSendReport(type='radio' name='report_frequency' value="never")
+                    label.m-l-sm(for='dontSendReport') Dont send me summary reports
+
+                  .input-group.m-t-md
+                    input#everyNewCandidates(type='checkbox' name='receives_new_candidate_notification' value="true")
+                    label.m-l-sm(for='everyNewCandidates') Send me a copy of each new canditate`s profile
+
+              .col-md-6.col-sm-6
+                .form-group.m-t-sm
+                  label.block Picture Profile
+                  span.m-b-sm.m-t-sm.fileinput-button.btn.btn-s-md.btn-primary.r
+                    i.fa.fa-cloud-upload.text &nbsp;
+                    | Choose File
+                    input#fileupload(type='file', name='company_logo')
+
+                  #progress-bar-upload.progress.progress-success.progress-striped.progress-sm.block
+                    .progress-bar.bg-info.lter(style='width: 0%;')
+                  .clearfix
+
+                  .dropzone.fade.dropzone-upload-logo.m-t-sm
+                    #view-logo-company.r.pad-r-n.pad-l-n
+                      .thumb-btn.wrapper-sm.inline.b.r
+                        img(src='#{user.photo_profile}', width='120px', height='120px')
+
+            .col-md-12.col-sm-12.b-t
+              .panel-body.m-b-sm.m-t-xs
+                button.btn.btn-md.text-md.btn-primary(type='submit', data-loading-text='Creating...')
+                  i.fa.fa-check
+                  | &nbsp;Save Changes
+            .clearfix
+
 
         .panel.panel-default.m-b
           header.panel-heading
-            h4.m-n.f-bold Edit Your Email
-          #editProfileEmailBlock.panel-body
+            h4.m-n.f-bold
+              i.fa.fa-envelope &nbsp;&nbsp;
+              | Edit Your Email
+          form
+            #editProfileEmailBlock.panel-body
+              .col-md-6.col-sm-6
+                .form-group
+                  label Email
+                  input.form-control(type="text" name="firstname" value=user.email)
+
+              .col-md-6.col-sm-6
+                .form-group
+                  label Social Account
+                  .input-group
+
+            .col-md-12.col-sm-12.b-t
+              .panel-body.m-b-sm.m-t-xs
+                button.btn.btn-md.text-md.btn-primary(type='submit', data-loading-text='Creating...')
+                  i.fa.fa-check
+                  | &nbsp;Save Changes
+            .clearfix
 
         .panel.panel-default.m-b
           header.panel-heading
-            h4.m-n.f-bold Edit Your Password
+            h4.m-n.f-bold
+              i.fa.fa-lock &nbsp;&nbsp;
+              | Edit Your Password
           #editProfilePasswordBlock.panel-body
 

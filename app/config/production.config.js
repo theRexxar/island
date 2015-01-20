@@ -6,18 +6,19 @@ var rootPath = path.normalize(__dirname + '/../..')
 var config = {
   ROOT     : rootPath,
   APP      : {
-    name : 'Scaleable'
+    name : 'Bakat.co',
+    title : 'A simple web app for hiring process.'
   },
-  BASE_HOST : 'http://scaleable.co',
-  BASE_JOB_HOST : 'http://jobs.scaleable.co',
-  BASE_API_HOST : 'http://api.scaleable.co',
-  CDN_HOST : 'http://cdn.scaleable.co',
+  BASE_HOST : 'http://bakat.co',
+  BASE_JOB_HOST : 'http://jobs.bakat.co',
+  BASE_API_HOST : 'http://api.bakat.co',
+  CDN_HOST : 'http://cdn.bakat.co',
   SERVER: {
     port: 3001,
     hostname: process.env.HOSTNAME || '127.0.0.1',
   },
   Db: {
-    url: 'mongodb://localhost/scaleable_prod'
+    url: 'mongodb://localhost/bakat_prod'
   },
   REDIS: {
     host: '127.0.0.1',

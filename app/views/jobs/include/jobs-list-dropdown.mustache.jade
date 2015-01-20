@@ -1,0 +1,4 @@
+script.
+  var jobListTemplate = '<li id="job_{{_id}}" class="job"><a href="/jobs/{{_id}}/edit?step=the_job"><h4>{{name}}</h4><span class="{{status}} label label--low">{{status}}</span><p> {{#department}} {{department}} · {{/department}} {{#locations.state_code}} {{locations.state_code}}, {{/locations.state_code}} {{locations.country_name}} &nbsp;</p></a></li>';
+
+  var jobListTemplateCurrent = '<li id="job_{{_id}}" class="job current"><h4>{{name}}</h4><span class="{{status}} label label--low">{{status}}</span><p>{{#department}} {{department}} · {{/department}} {{#locations.state_code}} {{locations.state_code}}, {{/locations.state_code}} {{locations.country_name}} &nbsp;</p></li>';
